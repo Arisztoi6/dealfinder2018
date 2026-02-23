@@ -159,37 +159,49 @@
     .address b{display:block; font-size:13px}
     .address span{display:block; font-size:13px; color:var(--muted)}
 
-    /* Gallery */
+    /* ===== CLEAN PROFESSIONAL GALLERY ===== */
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px;
-      margin-top:18px;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:20px;
+      margin-top:20px;
     }
     .gallery-item{
       position:relative;
-      overflow:hidden;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,.1);
-      background: rgba(255,255,255,.03);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#111827;
+      aspect-ratio: 4 / 3; /* makes all images same shape */
+      box-shadow: 0 15px 30px rgba(0,0,0,.35);
     }
     .gallery-item img{
       width:100%;
+      height:100%;
+      object-fit:cover; /* crops nicely */
+      transition: transform .4s ease;
       display:block;
-      transition:transform .45s ease;
     }
     .gallery-item:hover img{
-      transform:scale(1.05);
+      transform: scale(1.06);
     }
     .caption{
       position:absolute;
-      bottom:0; left:0; right:0;
+      bottom:0;
+      left:0;
+      right:0;
       padding:14px;
-      background:linear-gradient(to top, rgba(0,0,0,.78), transparent);
+      background:linear-gradient(to top, rgba(0,0,0,.85), transparent);
       color:white;
     }
-    .caption b{display:block; font-size:14px}
-    .caption span{font-size:12px; opacity:.88}
+    .caption b{
+      display:block;
+      font-size:14px;
+    }
+    .caption span{
+      font-size:12px;
+      opacity:.85;
+    }
 
     footer{
       border-top:1px solid var(--border);
@@ -374,7 +386,7 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- GALLERY (UPDATED TO UNIFORM SIZES) -->
     <section id="gallery" class="section">
       <div class="card">
         <h3>Previous Work</h3>
@@ -395,7 +407,7 @@
             <img src="shimano-cells.jpg" alt="Shimano battery cell layout rebuild">
             <div class="caption">
               <b>48V Shimano Pack</b>
-              <span>Balanced cell groups &amp; precision spot welding ✔</span>
+              <span>Balanced cell groups &amp; precision welding ✔</span>
             </div>
           </div>
 
