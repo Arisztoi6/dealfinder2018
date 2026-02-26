@@ -173,12 +173,17 @@
     .address b{display:block; font-size:13px}
     .address span{display:block; font-size:13px; color:var(--muted)}
 
-    /* ===== CLEAN PROFESSIONAL GALLERY ===== */
+    /* ===== CLEAN PROFESSIONAL GALLERY (FEATURED FIRST ROW) ===== */
     .gallery-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      grid-template-columns:repeat(3, 1fr);
       gap:20px;
       margin-top:20px;
+      /* Base row height; featured items span 2 rows */
+      grid-auto-rows: 180px;
+    }
+    @media (max-width: 900px){
+      .gallery-grid{ grid-template-columns:1fr; grid-auto-rows: 220px; }
     }
     .gallery-item{
       position:relative;
@@ -186,8 +191,12 @@
       overflow:hidden;
       border:1px solid rgba(255,255,255,.08);
       background:#111827;
-      aspect-ratio: 4 / 3;
+      height:100%;
       box-shadow: 0 15px 30px rgba(0,0,0,.35);
+    }
+    .gallery-item.featured{ grid-row: span 2; }
+    @media (max-width: 900px){
+      .gallery-item.featured{ grid-row: span 1; }
     }
     .gallery-item img{
       width:100%;
@@ -206,6 +215,7 @@
     }
     .caption b{display:block; font-size:14px}
     .caption span{font-size:12px; opacity:.85}
+
 
     footer{
       border-top:1px solid var(--border);
@@ -393,47 +403,73 @@
           Real examples of lithium-ion diagnostics, high-voltage rebuilds and BMS-level repairs (6V–100V).
         </p>
 
+        
         <div class="gallery-grid">
-          <div class="gallery-item">
-            <img src="shimano-pcb.jpg" alt="Shimano e-bike battery internal PCB repair">
+          <div class="gallery-item featured">
+            <img src="gallery-01-bosch.jpg" alt="Bosch PowerPack battery rebuild">
             <div class="caption">
-              <b>Shimano E-Bike Battery</b>
-              <span>Internal PCB diagnostics &amp; restoration ✔</span>
+              <b>Bosch PowerPack</b>
+              <span>Cell pack rebuild &amp; diagnostics ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item featured">
+            <img src="gallery-03-dyson.jpg" alt="Dyson V7 vacuum battery rebuild">
+            <div class="caption">
+              <b>Dyson V7 Battery</b>
+              <span>Rebuild with clean cell layout ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item featured">
+            <img src="gallery-04-mountfield.jpg" alt="80V Mountfield lawn mower battery balancing">
+            <div class="caption">
+              <b>80V Mountfield Pack</b>
+              <span>Balancing &amp; health check ✔</span>
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="shimano-cells.jpg" alt="Shimano battery cell layout rebuild">
+            <img src="gallery-02-bms.jpg" alt="BMS diagnostics and repair">
             <div class="caption">
-              <b>48V Shimano Pack</b>
-              <span>Balanced cell groups &amp; precision welding ✔</span>
+              <b>BMS Diagnostics</b>
+              <span>Board-level troubleshooting ✔</span>
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="dometic-recell.jpg" alt="Dometic power bank re-cell 18650 pack">
+            <img src="gallery-08-nebo.jpg" alt="Nebo Air Assist power bank rebuild">
             <div class="caption">
-              <b>Dometic Power Bank</b>
-              <span>Full 18650 re-cell &amp; rebuild ✔</span>
+              <b>Nebo Power Bank</b>
+              <span>Internal rebuild &amp; testing ✔</span>
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="phylion-ebtf360.jpg" alt="Phylion EBTF360 BMS board repair">
+            <img src="gallery-07-pcb_green.jpg" alt="Power electronics PCB diagnostics">
             <div class="caption">
-              <b>Phylion EBTF360 BMS</b>
-              <span>Board-level diagnostics &amp; component repair ✔</span>
+              <b>Power Electronics</b>
+              <span>Control board inspection ✔</span>
             </div>
           </div>
 
           <div class="gallery-item">
-            <img src="72v-scooter.jpg" alt="72V e-scooter battery rebuild">
+            <img src="gallery-06-fluke.jpg" alt="Voltage measurement and verification">
             <div class="caption">
-              <b>72V E-Scooter Pack</b>
-              <span>High-voltage rebuild &amp; BMS integration ✔</span>
+              <b>Verification Testing</b>
+              <span>Measured &amp; checked before return ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="gallery-05-diaggrid.jpg" alt="Load testing and discharge curves">
+            <div class="caption">
+              <b>Load &amp; Discharge Tests</b>
+              <span>Performance checks &amp; curves ✔</span>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
