@@ -225,7 +225,10 @@
     }
     .footbrand{display:flex; align-items:center; gap:10px}
     .footbrand img{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04)}
-  </style>
+  
+    .map-wrap iframe{ filter:saturate(1.05) contrast(1.05); }
+    .btn{ cursor:pointer; }
+</style>
 </head>
 
 <body>
@@ -282,10 +285,19 @@
           <div class="pill">Tamworth, UK</div>
         </div>
 
-        <div class="address" aria-label="Business address">
-          <b>Address</b>
-          <span>87 Stonepit, Tamworth, B77 1DW, UK</span>
+        
+        <div class="address" aria-label="Service area" style="margin-top:12px">
+          <b>Based in</b>
+          <span>Tamworth (B77), UK — workshop address shared after booking (appointment only)</span>
         </div>
+        <div class="small" style="margin-top:8px">
+          <b>Service options:</b>
+          <ul style="margin:8px 0 0 18px; padding:0; line-height:1.5">
+            <li><b>Local drop-off</b> (appointment only)</li>
+            <li><b>UK-wide postal repairs</b> (tracked shipping)</li>
+          </ul>
+        </div>
+
 
         <p class="small">
           Note: I may refuse severely damaged packs (e.g., fire damage or swollen/leaking cells) for safety and reliability.
@@ -493,15 +505,21 @@
         <h3>Contact / Quote request</h3>
         <p class="note">Fastest: WhatsApp. Or email me with details + photos.</p>
 
+        
         <div class="actions" style="margin:10px 0 6px">
           <a class="btn primary" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">
-            WhatsApp: 07780 073110
+            WhatsApp quote
           </a>
           <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">
-            Email: arisztoi6@gmail.com
+            Email
           </a>
-          <a class="btn" href="tel:+447780073110">Call</a>
+          <button class="btn" type="button" id="revealPhoneBtn">Show phone</button>
+          <a class="btn" id="callNowBtn" href="#" style="display:none">Call now</a>
         </div>
+        <p class="small" id="phoneNote" style="margin-top:6px">
+          <span style="opacity:.85">Tip: WhatsApp is fastest. Phone shown to reduce spam scraping.</span>
+        </p>
+
 
         <form action="mailto:arisztoi6@gmail.com" method="post" enctype="text/plain">
           <div class="two">
@@ -539,11 +557,47 @@
           </p>
         </form>
 
-        <div class="address" style="margin-top:14px">
-          <b>Address</b>
-          <span>87 Stonepit, Tamworth, B77 1DW, UK</span>
+        
+      
+        <div class="address" style="margin-top:14px" aria-label="Service area">
+          <b>Based in</b>
+          <span>Tamworth (B77), UK — address shared after booking (appointment only)</span>
         </div>
-      </div>
+
+        <div class="two" style="margin-top:12px; gap:12px">
+          <div class="card" style="padding:14px; background:rgba(255,255,255,.03)">
+            <b style="color:var(--text)">Service area</b>
+            <div class="small" style="margin-top:8px">
+              <ul style="margin:8px 0 0 18px; padding:0; line-height:1.55">
+                <li>Tamworth &amp; nearby (Lichfield, Atherstone, Sutton Coldfield)</li>
+                <li>Staffordshire / West Midlands</li>
+                <li>UK-wide postal repairs (tracked shipping)</li>
+              </ul>
+            </div>
+            <div class="small" style="margin-top:10px; opacity:.9">
+              For security, the exact workshop address is provided after we confirm the job.
+            </div>
+          </div>
+
+          <div class="card map-wrap" style="padding:0; overflow:hidden; background:rgba(255,255,255,.03)">
+            <iframe
+              title="Service area map (Tamworth)"
+              src="https://www.google.com/maps?q=Tamworth%20B77%20UK&output=embed"
+              width="100%" height="260"
+              style="border:0; display:block"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px; padding:14px; background:rgba(255,255,255,.03)">
+          <b style="color:var(--text)">Hours</b>
+          <div class="small" style="margin-top:8px; line-height:1.7">
+            Mon–Fri: 9:00–17:00 (messages anytime) <br/>
+            Sat: appointment only <br/>
+            Sun: closed
+          </div>
+        </div>
+</div>
     </section>
 
     <footer>
@@ -553,8 +607,7 @@
             <img src="logo.png" alt="DealFinder2018 Logo">
             <div>
               <b style="color:var(--text)">DealFinder2018</b><br/>
-              87 Stonepit, Tamworth, B77 1DW, UK<br/>
-              WhatsApp: 07780 073110 • Email: arisztoi6@gmail.com
+              Tamworth (B77), UK • Appointment-only drop-off<br/>WhatsApp: 07780 073110 • Email: arisztoi6@gmail.com
             </div>
           </div>
           <div style="text-align:right">
@@ -581,12 +634,31 @@
     "email": "arisztoi6@gmail.com",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "87 Stonepit",
       "addressLocality": "Tamworth",
-      "postalCode": "B77 1DW",
-      "addressCountry": "UK"
+      "postalCode": "B77",
+      "addressCountry": "GB"
     }
   }
   </script>
+
+<script>
+  // Simple anti-scrape: reveal number on click
+  (function(){
+    const revealBtn = document.getElementById('revealPhoneBtn');
+    const callBtn = document.getElementById('callNowBtn');
+    if(!revealBtn || !callBtn) return;
+
+    const parts = ["07780","073110"];
+    const display = parts.join(" ");
+    const tel = "+447780073110";
+
+    revealBtn.addEventListener('click', function(){
+      revealBtn.textContent = display;
+      revealBtn.setAttribute('aria-label', 'Phone number');
+      callBtn.style.display = "inline-flex";
+      callBtn.href = "tel:" + tel;
+    });
+  })();
+</script>
 </body>
 </html>
