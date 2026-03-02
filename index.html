@@ -201,8 +201,7 @@
     .gallery-item img{
       width:100%;
       height:100%;
-      object-fit:contain;
-      background:#0b1020;
+      object-fit:cover;
       transition: transform .4s ease;
       display:block;
     }
@@ -225,7 +224,162 @@
     }
     .footbrand{display:flex; align-items:center; gap:10px}
     .footbrand img{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04)}
-  </style>
+  
+/* --- Shop --- */
+.shop-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap:14px;
+  margin-top:14px;
+}
+.shop-card{
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  overflow:hidden;
+  background: rgba(255,255,255,.03);
+}
+.shop-card.featured{
+  grid-column: span 2;
+}
+@media (max-width: 800px){
+  .shop-card.featured{ grid-column: span 1; }
+}
+.shop-thumb{
+  width:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  display:block;
+  position:relative;
+  cursor:pointer;
+}
+.shop-thumb img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  display:block;
+  background:#0b1020;
+}
+.shop-thumb-hint{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+}
+.shop-card-body{
+  padding:12px 12px 14px;
+}
+.shop-title{
+  font-weight:700;
+  line-height:1.25;
+  margin-bottom:6px;
+}
+.shop-subtitle{
+  opacity:.85;
+  font-size:13px;
+  margin-bottom:10px;
+}
+.shop-price{
+  font-weight:800;
+  margin:8px 0 10px;
+}
+.shop-bullets{
+  margin:0 0 10px 18px;
+  padding:0;
+  line-height:1.5;
+  font-size:13px;
+  opacity:.92;
+}
+.shop-extra{
+  font-size:13px;
+  opacity:.9;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.shop-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Lightbox */
+.shop-lightbox{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,.85);
+  z-index: 9999;
+  padding: 18px;
+}
+.shop-lightbox[aria-hidden="false"]{ display:flex; }
+.shop-lightbox-inner{
+  width:min(980px, 100%);
+  background:#0b1020;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  overflow:hidden;
+  padding:14px;
+}
+.shop-lightbox-title{
+  font-weight:800;
+  margin:4px 0 12px;
+}
+.shop-lightbox-img{
+  width:100%;
+  height: min(62vh, 520px);
+  object-fit:contain;
+  background:#050914;
+  border-radius:14px;
+  display:block;
+}
+.shop-lightbox-thumbs{
+  display:flex;
+  gap:8px;
+  overflow:auto;
+  padding:10px 2px 6px;
+}
+.shop-lightbox-thumbs button{
+  border:1px solid rgba(255,255,255,.15);
+  background:transparent;
+  padding:0;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  flex: 0 0 auto;
+}
+.shop-lightbox-thumbs img{
+  width:86px;
+  height:64px;
+  object-fit:cover;
+  display:block;
+}
+.shop-lightbox-controls{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:8px;
+}
+.shop-lightbox-close{
+  position:absolute;
+  top:16px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(0,0,0,.35);
+  color:#fff;
+  font-size:26px;
+  cursor:pointer;
+}
+
+</style>
 </head>
 
 <body>
@@ -245,7 +399,8 @@
         <a href="#pricing">Pricing</a>
         <a href="#gallery">Gallery</a>
         <a href="#faq">FAQ</a>
-        <a href="#contact">Contact</a>
+        <a href="#shop">Shop</a>
+          <a href="#contact">Contact</a>
       </nav>
 
       <a class="cta" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">
@@ -397,7 +552,6 @@
       </div>
     </section>
 
-    
     <section id="gallery" class="section">
       <div class="card">
         <h3>Previous Work</h3>
@@ -406,44 +560,40 @@
         </p>
 
         <div class="gallery-grid">
+          <div class="gallery-item featured">
+            <img src="gallery1.png" alt="Battery repair collage 1">
+            <div class="caption">
+              <b>Repairs &amp; Rebuilds</b>
+              <span>Real work examples ✔</span>
+            </div>
+          </div>
 
           <div class="gallery-item featured">
-            <img src="gallery1.png" alt="High Voltage Battery Rebuild">
+            <img src="gallery2.png" alt="Battery repair collage 2">
             <div class="caption">
-              <b>High-Voltage Pack Rebuild</b>
-              <span>Full cell rebuild with integrated BMS ✔</span>
+              <b>Diagnostics</b>
+              <span>Testing &amp; troubleshooting ✔</span>
             </div>
           </div>
 
           <div class="gallery-item featured">
-            <img src="gallery2.png" alt="BMS Diagnostics">
+            <img src="gallery3.png" alt="Battery repair collage 3">
             <div class="caption">
-              <b>BMS Diagnostics</b>
-              <span>Board-level voltage testing & fault tracing ✔</span>
+              <b>Pack Rebuilds</b>
+              <span>Cell layout &amp; BMS work ✔</span>
             </div>
           </div>
 
-          <div class="gallery-item">
-            <img src="gallery3.png" alt="Corroded BMS Repair">
+          <div class="gallery-item featured">
+            <img src="gallery4.png" alt="Battery repair collage 4">
             <div class="caption">
-              <b>Corroded BMS Repair</b>
-              <span>Water damage inspection & precision repair ✔</span>
+              <b>Verification</b>
+              <span>Final checks &amp; measurements ✔</span>
             </div>
           </div>
-
-          <div class="gallery-item">
-            <img src="gallery4.png" alt="Load & Discharge Testing">
-            <div class="caption">
-              <b>Load & Discharge Testing</b>
-              <span>Performance verification & curve analysis ✔</span>
-            </div>
-          </div>
-
         </div>
-
       </div>
     </section>
-
 
     <section id="faq" class="section">
       <div class="card">
@@ -488,7 +638,185 @@
       </div>
     </section>
 
-    <section id="contact" class="section">
+    
+    <section id="shop" class="section">
+      <div class="card">
+        <h3>Shop</h3>
+        <p class="note">Workshop tools, materials and tested used batteries in stock.</p>
+
+        <div class="shop-grid">
+
+          <div class="shop-card featured">
+            <div class="shop-card-body">
+              <div class="shop-title">DealFinder LXT Diagnostic Interface</div>
+              <div class="shop-subtitle">For 18V LXT-Compatible Battery Packs</div>
+              <div class="shop-price">£45</div>
+              <ul class="shop-bullets"><li>Displays charge cycle count</li><li>Identifies battery model</li><li>Shows lock status</li><li>Includes service unlock functionality for supported packs</li><li>Reads individual cell voltages &amp; imbalance</li><li>Displays pack voltage, temperature &amp; error data</li><li>Displays battery ROM ID</li></ul>
+              <div class="shop-extra">Includes: Pre-assembled &amp; pre-programmed device, USB-C to USB cable, software download provided after purchase.</div>
+              <div class="shop-actions">
+                <a class="btn primary" href="https://wa.me/447780073110?text=Hi!%20I%20want%20to%20order%20the%20DealFinder%20LXT%20Diagnostic%20Interface." target="_blank" rel="noopener">Order via WhatsApp</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <div class="shop-card-body">
+              <div class="shop-title">Pure Nickel Strip 99.96%</div>
+              <div class="shop-subtitle">10mm × 0.2mm × 2m</div>
+              <div class="shop-price">£18</div>
+              <ul class="shop-bullets"><li>Spot welding grade</li><li>High conductivity</li><li>Suitable for lithium pack rebuilds</li></ul>
+              
+              <div class="shop-actions">
+                <a class="btn primary" href="https://wa.me/447780073110?text=Hi!%20I%20want%20to%20order%20the%20Pure%20Nickel%20Strip%20(10mm%20×%200.2mm%20×%202m)." target="_blank" rel="noopener">Order via WhatsApp</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="EGO Power+ 56V 7.5Ah Battery" data-images="Ego.jpg|Ego1.jpg|Ego2.jpg|Ego3.jpg" aria-label="View photos: EGO Power+ 56V 7.5Ah Battery">
+              <img src="Ego.jpg" alt="EGO Power+ 56V 7.5Ah Battery photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">EGO Power+ 56V 7.5Ah Battery</div>
+              <div class="shop-price">£150</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20EGO%20Power+%2056V%207.5Ah%20Battery%20(%C2%A3150)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Gtech 200A001 48V 2000mAh Battery" data-images="Gtech.jpg|Gtech1.jpg|Gtech4.jpg|Gtech3.jpg" aria-label="View photos: Gtech 200A001 48V 2000mAh Battery">
+              <img src="Gtech.jpg" alt="Gtech 200A001 48V 2000mAh Battery photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Gtech 200A001 48V 2000mAh Battery</div>
+              <div class="shop-price">£75</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Gtech%20200A001%2048V%202000mAh%20Battery%20(%C2%A375)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Makita BL3626 36V 2.6Ah" data-images="makita36V.jpg|makita36V1.jpg|makita36V2.jpg|makita36V3.jpg|makita36V4.jpg" aria-label="View photos: Makita BL3626 36V 2.6Ah">
+              <img src="makita36V.jpg" alt="Makita BL3626 36V 2.6Ah photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Makita BL3626 36V 2.6Ah</div>
+              <div class="shop-price">£60</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Makita%20BL3626%2036V%202.6Ah%20(%C2%A360)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Heartway EBP21A071C1 Mobility Scooter Battery" data-images="medical.jpg|medical1.jpg|medical2.jpg|medical3.jpg" aria-label="View photos: Heartway EBP21A071C1 Mobility Scooter Battery">
+              <img src="medical.jpg" alt="Heartway EBP21A071C1 Mobility Scooter Battery photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Heartway EBP21A071C1 Mobility Scooter Battery</div>
+              <div class="shop-price">£250</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Heartway%20EBP21A071C1%20Mobility%20Scooter%20Battery%20(%C2%A3250)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Stiga BT20Li 18V Battery" data-images="Stiga.jpg|stiga1.jpg|stiga2.jpg|stiga3.jpg" aria-label="View photos: Stiga BT20Li 18V Battery">
+              <img src="Stiga.jpg" alt="Stiga BT20Li 18V Battery photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Stiga BT20Li 18V Battery</div>
+              <div class="shop-price">£25</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Stiga%20BT20Li%2018V%20Battery%20(%C2%A325)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Stihl Battery AS2 10.8V 2.6Ah" data-images="StihlAL.jpg|StihlAL1.jpg|StihlAL2.jpg|StihlAL3.jpg" aria-label="View photos: Stihl Battery AS2 10.8V 2.6Ah">
+              <img src="StihlAL.jpg" alt="Stihl Battery AS2 10.8V 2.6Ah photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Stihl Battery AS2 10.8V 2.6Ah</div>
+              <div class="shop-price">£42</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Stihl%20Battery%20AS2%2010.8V%202.6Ah%20(%C2%A342)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="Stihl AP100 Battery" data-images="stihlAP100.jpg|stihlAP1001.jpg|stihlAP1002.jpg" aria-label="View photos: Stihl AP100 Battery">
+              <img src="stihlAP100.jpg" alt="Stihl AP100 Battery photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">Stihl AP100 Battery</div>
+              <div class="shop-price">£95</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20Stihl%20AP100%20Battery%20(%C2%A395)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 1.5Ah Battery (G Range)" data-images="vonhaus20V.jpg|vonhaus20V1.jpg|vonhaus20V2.jpg|vonhaus20V3.jpg" aria-label="View photos: VonHaus G Series 20V 1.5Ah Battery (G Range)">
+              <img src="vonhaus20V.jpg" alt="VonHaus G Series 20V 1.5Ah Battery (G Range) photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">VonHaus G Series 20V 1.5Ah Battery (G Range)</div>
+              <div class="shop-price">£20</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20VonHaus%20G%20Series%2020V%201.5Ah%20Battery%20(G%20Range)%20(%C2%A320)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="shop-card">
+            <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 4.0Ah Battery (G Range)" data-images="vonhaus20V4ah.jpg|vonhaus20V4ah1.jpg|vonhaus20V4ah2.jpg" aria-label="View photos: VonHaus G Series 20V 4.0Ah Battery (G Range)">
+              <img src="vonhaus20V4ah.jpg" alt="VonHaus G Series 20V 4.0Ah Battery (G Range) photo">
+              <span class="shop-thumb-hint">View photos</span>
+            </button>
+            <div class="shop-card-body">
+              <div class="shop-title">VonHaus G Series 20V 4.0Ah Battery (G Range)</div>
+              <div class="shop-price">£45</div>
+              <div class="shop-actions">
+                <a class="btn" href="https://wa.me/447780073110?text=Hi!%20I%20am%20interested%20in%3A%20VonHaus%20G%20Series%2020V%204.0Ah%20Battery%20(G%20Range)%20(%C2%A345)." target="_blank" rel="noopener">Enquire</a>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    </section>
+
+    <!-- Shop Lightbox -->
+    <div class="shop-lightbox" id="shopLightbox" aria-hidden="true">
+      <button class="shop-lightbox-close" type="button" id="shopLightboxClose" aria-label="Close">×</button>
+      <div class="shop-lightbox-inner">
+        <div class="shop-lightbox-title" id="shopLightboxTitle"></div>
+        <img class="shop-lightbox-img" id="shopLightboxImg" alt="">
+        <div class="shop-lightbox-thumbs" id="shopLightboxThumbs"></div>
+        <div class="shop-lightbox-controls">
+          <button type="button" class="btn" id="shopPrevBtn">Prev</button>
+          <button type="button" class="btn" id="shopNextBtn">Next</button>
+        </div>
+      </div>
+    </div>
+
+<section id="contact" class="section">
       <div class="card">
         <h3>Contact / Quote request</h3>
         <p class="note">Fastest: WhatsApp. Or email me with details + photos.</p>
@@ -588,5 +916,93 @@
     }
   }
   </script>
+
+<script>
+(function(){
+  const lb = document.getElementById('shopLightbox');
+  const lbImg = document.getElementById('shopLightboxImg');
+  const lbTitle = document.getElementById('shopLightboxTitle');
+  const lbThumbs = document.getElementById('shopLightboxThumbs');
+  const btnClose = document.getElementById('shopLightboxClose');
+  const btnPrev = document.getElementById('shopPrevBtn');
+  const btnNext = document.getElementById('shopNextBtn');
+
+  if(!lb || !lbImg || !lbThumbs) return;
+
+  let imgs = [];
+  let idx = 0;
+
+  function render(){
+    lbImg.src = imgs[idx] || '';
+    lbImg.alt = (lbTitle.textContent || 'Battery photo') + ' photo ' + (idx+1);
+    // thumbs
+    lbThumbs.innerHTML = '';
+    imgs.forEach((src, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Photo ' + (i+1));
+      const im = document.createElement('img');
+      im.src = src;
+      im.alt = 'Thumbnail ' + (i+1);
+      b.appendChild(im);
+      b.addEventListener('click', () => { idx = i; render(); });
+      lbThumbs.appendChild(b);
+    });
+  }
+
+  function open(title, images, startIndex){
+    lbTitle.textContent = title || 'Photos';
+    imgs = images || [];
+    idx = Math.max(0, Math.min(startIndex || 0, imgs.length-1));
+    lb.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    render();
+  }
+
+  function close(){
+    lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+    imgs = [];
+    idx = 0;
+    lbImg.src = '';
+  }
+
+  function next(){
+    if(!imgs.length) return;
+    idx = (idx + 1) % imgs.length;
+    render();
+  }
+  function prev(){
+    if(!imgs.length) return;
+    idx = (idx - 1 + imgs.length) % imgs.length;
+    render();
+  }
+
+  document.querySelectorAll('.shop-thumb[data-images]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const title = btn.getAttribute('data-title') || 'Photos';
+      const list = (btn.getAttribute('data-images') || '').split('|').filter(Boolean);
+      open(title, list, 0);
+    });
+  });
+
+  btnClose && btnClose.addEventListener('click', close);
+  btnNext && btnNext.addEventListener('click', next);
+  btnPrev && btnPrev.addEventListener('click', prev);
+
+  lb.addEventListener('click', (e) => {
+    if(e.target === lb) close();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if(lb.getAttribute('aria-hidden') === 'false'){
+      if(e.key === 'Escape') close();
+      if(e.key === 'ArrowRight') next();
+      if(e.key === 'ArrowLeft') prev();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
