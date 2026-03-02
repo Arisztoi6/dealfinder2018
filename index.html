@@ -1015,5 +1015,38 @@
 })();
 </script>
 
+
+<!-- Simple Verification Phone Protection -->
+<div style="margin-top:20px; text-align:center;">
+  <div id="verificationBox">
+    <p><strong>Verification required</strong></p>
+    <p>What is 3 + 4?</p>
+    <input type="number" id="verifyInput" placeholder="Your answer" style="padding:8px;border-radius:6px;border:1px solid #ccc;">
+    <button onclick="verifyAnswer()" style="
+      background:#2563eb;color:white;padding:8px 14px;border:none;
+      border-radius:6px;cursor:pointer;font-weight:600;margin-left:6px;">
+      Submit
+    </button>
+    <p id="verifyMessage" style="margin-top:10px;color:red;"></p>
+  </div>
+
+  <p id="phoneNumber" style="display:none;font-weight:700;margin-top:15px;">
+    07XXXXXXXXX
+  </p>
+</div>
+
+<script>
+function verifyAnswer(){
+  var input = document.getElementById("verifyInput").value;
+  var message = document.getElementById("verifyMessage");
+  if(input == "7"){
+    document.getElementById("verificationBox").style.display = "none";
+    document.getElementById("phoneNumber").style.display = "block";
+  } else {
+    message.textContent = "Incorrect answer. Please try again.";
+  }
+}
+</script>
+
 </body>
 </html>
