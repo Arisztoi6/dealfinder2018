@@ -293,6 +293,82 @@
       margin-top:14px;
     }
 
+/* Battery Gallery (lightbox) */
+.battery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:22px;
+  margin-top:25px;
+}
+.battery-card{
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.battery-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 24px rgba(0,0,0,0.10);
+}
+.battery-card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
+  cursor:pointer;
+}
+.battery-card h3{
+  margin:0;
+  padding:14px 14px 16px;
+  text-align:center;
+  font-size:16px;
+}
+.lightbox{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.88);
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:22px;
+}
+.lightbox img{
+  max-width:92vw;
+  max-height:78vh;
+  border-radius:10px;
+  box-shadow:0 8px 28px rgba(0,0,0,.35);
+}
+.lightbox-controls{
+  display:flex;
+  gap:14px;
+  margin-top:16px;
+}
+.lightbox-controls button{
+  padding:10px 16px;
+  border:0;
+  border-radius:10px;
+  background:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:22px;
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:12px;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:28px;
+  cursor:pointer;
+}
+.lightbox-close:hover{ background:rgba(255,255,255,.18); }
+.muted{ color:#667085; }
 </style>
 </head>
 
@@ -474,51 +550,32 @@
     </section>
 
     
-    <section id="gallery" class="section">
-      <div class="card">
-        <h3>Previous Work</h3>
-        <p class="note">
-          Real examples of lithium-ion diagnostics, high-voltage rebuilds and BMS-level repairs (6V–100V).
-        </p>
+    <section id="gallery">
+  <h2>Battery Repair Gallery</h2>
+  <p class="muted">Click a battery to view more photos.</p>
 
-        <div class="gallery-grid">
+  <div class="battery-grid">
+    <div class="battery-card"><img src="Ego.jpg" alt="EGO 56V 7.5Ah" onclick="openGallery(0,0)"><h3>EGO 56V 7.5Ah</h3></div>
+    <div class="battery-card"><img src="Gtech.jpg" alt="Gtech 48V" onclick="openGallery(1,0)"><h3>Gtech 48V</h3></div>
+    <div class="battery-card"><img src="makita36V.jpg" alt="Makita BL3626 36V" onclick="openGallery(2,0)"><h3>Makita BL3626 36V</h3></div>
+    <div class="battery-card"><img src="medical.jpg" alt="Heartway Mobility" onclick="openGallery(3,0)"><h3>Heartway Mobility</h3></div>
+    <div class="battery-card"><img src="Stiga.jpg" alt="Stiga BT20Li 18V" onclick="openGallery(4,0)"><h3>Stiga BT20Li 18V</h3></div>
+    <div class="battery-card"><img src="StihlAL.jpg" alt="Stihl AS2 10.8V 2.6Ah" onclick="openGallery(5,0)"><h3>Stihl AS2 10.8V 2.6Ah</h3></div>
+    <div class="battery-card"><img src="stihlAP100.jpg" alt="Stihl AP100" onclick="openGallery(6,0)"><h3>Stihl AP100</h3></div>
+    <div class="battery-card"><img src="stihlAP200.jpg" alt="Stihl AP200" onclick="openGallery(7,0)"><h3>Stihl AP200</h3></div>
+    <div class="battery-card"><img src="vonhaus20V.jpg" alt="VonHaus G Series 20V 1.5Ah" onclick="openGallery(8,0)"><h3>VonHaus G Series 20V 1.5Ah</h3></div>
+    <div class="battery-card"><img src="vonhaus20V4ah.jpg" alt="VonHaus G Series 20V 4Ah" onclick="openGallery(9,0)"><h3>VonHaus G Series 20V 4Ah</h3></div>
+  </div>
 
-          <div class="gallery-item featured">
-            <img src="gallery1.png" alt="High Voltage Battery Rebuild">
-            <div class="caption">
-              <b>High-Voltage Pack Rebuild</b>
-              <span>Full cell rebuild with integrated BMS ✔</span>
-            </div>
-          </div>
-
-          <div class="gallery-item featured">
-            <img src="gallery2.png" alt="BMS Diagnostics">
-            <div class="caption">
-              <b>BMS Diagnostics</b>
-              <span>Board-level voltage testing & fault tracing ✔</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="gallery3.png" alt="Corroded BMS Repair">
-            <div class="caption">
-              <b>Corroded BMS Repair</b>
-              <span>Water damage inspection & precision repair ✔</span>
-            </div>
-          </div>
-
-          <div class="gallery-item">
-            <img src="gallery4.png" alt="Load & Discharge Testing">
-            <div class="caption">
-              <b>Load & Discharge Testing</b>
-              <span>Performance verification & curve analysis ✔</span>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" onclick="closeGallery()" aria-label="Close">&times;</button>
+    <img id="lightbox-img" alt="Battery photo">
+    <div class="lightbox-controls">
+      <button onclick="prevImage()">Prev</button>
+      <button onclick="nextImage()">Next</button>
+    </div>
+  </div>
+</section>
 
 
     <section id="faq" class="section">
@@ -870,6 +927,58 @@ iv>
       callBtn.href = "tel:" + tel;
     });
   })();
+// Battery gallery lightbox
+const galleries = [
+  ["Ego.jpg","Ego1.jpg","Ego2.jpg","Ego3.jpg"],
+  ["Gtech.jpg","Gtech1.jpg","Gtech4.jpg","Gtech3.jpg"],
+  ["makita36V.jpg","makita36V1.jpg","makita36V2.jpg","makita36V3.jpg","makita36V4.jpg"],
+  ["medical.jpg","medical1.jpg","medical2.jpg","medical3.jpg"],
+  ["Stiga.jpg","stiga1.jpg","stiga2.jpg","stiga3.jpg"],
+  ["StihlAL.jpg","StihlAL1.jpg","StihlAL2.jpg","StihlAL3.jpg"],
+  ["stihlAP100.jpg","stihlAP1001.jpg","stihlAP1002.jpg"],
+  ["stihlAP200.jpg","stihlAP2001.jpg","stihlAP2003.jpg","stihlAP2004.jpg"],
+  ["vonhaus20V.jpg","vonhaus20V1.jpg","vonhaus20V2.jpg","vonhaus20V3.jpg"],
+  ["vonhaus20V4ah.jpg","vonhaus20V4ah1.jpg","vonhaus20V4ah2.jpg"]
+];
+
+let currentGallery = 0;
+let currentIndex = 0;
+
+function openGallery(galleryIndex, imageIndex){
+  currentGallery = galleryIndex;
+  currentIndex = imageIndex;
+  const lb = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  img.src = galleries[currentGallery][currentIndex];
+  lb.style.display = "flex";
+  lb.setAttribute("aria-hidden","false");
+}
+
+function closeGallery(){
+  const lb = document.getElementById("lightbox");
+  lb.style.display = "none";
+  lb.setAttribute("aria-hidden","true");
+}
+
+function nextImage(){
+  currentIndex = (currentIndex + 1) % galleries[currentGallery].length;
+  document.getElementById("lightbox-img").src = galleries[currentGallery][currentIndex];
+}
+
+function prevImage(){
+  currentIndex = (currentIndex - 1 + galleries[currentGallery].length) % galleries[currentGallery].length;
+  document.getElementById("lightbox-img").src = galleries[currentGallery][currentIndex];
+}
+
+// Close lightbox on background click or ESC
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape") closeGallery();
+});
+document.addEventListener("click", (e) => {
+  const lb = document.getElementById("lightbox");
+  if(!lb) return;
+  if(lb.style.display === "flex" && e.target === lb) closeGallery();
+});
 </script>
 </body>
 </html>
