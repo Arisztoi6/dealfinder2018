@@ -1,89 +1,1078 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Battery Repair Gallery</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f6f8;margin:0;padding:40px}
-h1{text-align:center;margin-bottom:40px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
-.card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.08);overflow:hidden;transition:0.2s}
-.card:hover{transform:translateY(-4px)}
-.card img{width:100%;height:220px;object-fit:cover;cursor:pointer}
-.card h3{padding:15px;margin:0;font-size:16px;text-align:center}
-.lightbox{display:none;position:fixed;z-index:999;background:rgba(0,0,0,0.85);top:0;left:0;width:100%;height:100%;align-items:center;justify-content:center;flex-direction:column}
-.lightbox img{max-width:90%;max-height:80%;margin-bottom:20px}
-.controls{display:flex;gap:20px}
-.controls button{padding:10px 18px;border:none;border-radius:6px;background:#fff;cursor:pointer;font-weight:bold}
-.close{position:absolute;top:25px;right:40px;font-size:28px;color:#fff;cursor:pointer}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>E-Bike &amp; Lithium Battery Repair Tamworth | DealFinder2018</title>
+  <meta name="description" content="Professional e-bike and lithium battery repair in Tamworth, UK. Diagnostics from £40. 6V–100V packs, rebuilds, re-celling and BMS repairs by DealFinder2018." />
+
+  <!-- Canonical (helps search engines) -->
+  <link rel="canonical" href="https://arisztoi6.github.io/dealfinder2018/" />
+
+  <!-- Favicon (uses your logo file) -->
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <!-- Social preview (free, makes links look nicer) -->
+  <meta property="og:title" content="DealFinder2018 | E-Bike & Lithium Battery Repair (Tamworth)" />
+  <meta property="og:description" content="Diagnostics from £40 • Minor repairs from £50 • 6V–100V lithium pack repairs, rebuilds, re-celling & BMS diagnostics." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://arisztoi6.github.io/dealfinder2018/" />
+  <meta property="og:image" content="https://arisztoi6.github.io/dealfinder2018/logo.png" />
+
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121a33; --muted:#a9b2d6; --text:#eef2ff;
+      --accent:#5eead4; --accent2:#60a5fa; --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 40px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 1050px;
+      --pad: 18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; font-family:var(--font); color:var(--text); background:
+      radial-gradient(1200px 800px at 20% 10%, rgba(96,165,250,.18), transparent 55%),
+      radial-gradient(900px 700px at 80% 20%, rgba(94,234,212,.16), transparent 55%),
+      radial-gradient(900px 700px at 50% 90%, rgba(96,165,250,.10), transparent 55%),
+      var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px var(--pad)}
+    header{
+      position:sticky; top:0; z-index:5;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,16,32,.85), rgba(11,16,32,.55));
+      border-bottom:1px solid var(--border);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo-img{
+      width:46px; height:46px; border-radius:12px;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 12px 28px rgba(0,0,0,.45);
+      background: rgba(255,255,255,.04);
+      object-fit: cover;
+    }
+    .brand h1{font-size:15px; margin:0; letter-spacing:.2px}
+    .brand p{margin:0; font-size:12px; color:var(--muted)}
+    nav{display:flex; gap:4px; flex-wrap:wrap}
+    nav a{
+      font-size:13px; color:var(--muted); padding:10px 10px; border-radius:12px;
+    }
+    nav a:hover{background:rgba(255,255,255,.06); color:var(--text)}
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:11px 14px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(94,234,212,.18), rgba(96,165,250,.18));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow: var(--shadow);
+      font-weight:700; font-size:13px;
+      white-space:nowrap;
+    }
+    .cta:hover{transform: translateY(-1px)}
+
+    .hero{padding:34px 0 12px}
+    .grid{display:grid; grid-template-columns: 1.25fr .75fr; gap:18px;}
+    @media (max-width: 900px){
+      .grid{grid-template-columns:1fr}
+      nav{display:none}
+      header .cta{margin-left:auto}
+    }
+
+    .card{
+      background: rgba(18,26,51,.78);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+    .badge{
+      display:inline-flex; gap:8px; align-items:center;
+      font-size:12px; color:var(--muted);
+      padding:7px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+    }
+    .badge i{width:8px; height:8px; border-radius:50%; background:var(--accent)}
+    h2{margin:12px 0 10px; font-size:34px; line-height:1.15}
+    .lead{color:var(--muted); font-size:15px; max-width:60ch}
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px; padding:12px 14px; border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      font-weight:700; font-size:13px;
+      cursor:pointer;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(94,234,212,.22), rgba(96,165,250,.22));
+      border:1px solid rgba(255,255,255,.18);
+    }
+
+    .kpi{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .pill{
+      padding:8px 10px; border-radius:999px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      font-size:12px; color:var(--muted);
+    }
+
+    .list{display:grid; gap:10px; margin-top:14px}
+    .li{
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px; border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      margin-top:6px; flex:0 0 auto;
+    }
+    .li b{display:block; font-size:13px}
+    .li span{display:block; color:var(--muted); font-size:13px}
+
+    .section{padding:18px 0}
+    .section h3{margin:0 0 10px; font-size:18px}
+    .cols{display:grid; grid-template-columns: repeat(3,1fr); gap:14px}
+    @media (max-width: 900px){ .cols{grid-template-columns:1fr} }
+    .mini{
+      padding:16px; border-radius:18px; border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .mini h4{margin:0 0 6px; font-size:14px}
+    .mini p{margin:0; color:var(--muted); font-size:13px}
+
+    .note{font-size:12px; color:var(--muted)}
+    .small{font-size:12px; color:var(--muted); margin-top:8px}
+
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width: 900px){ .two{grid-template-columns:1fr} }
+
+    input, textarea{
+      width:100%; padding:12px 12px; border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      outline:none;
+    }
+    textarea{min-height:110px; resize:vertical}
+    label{font-size:12px; color:var(--muted); display:block; margin:10px 0 6px}
+
+    .address{
+      margin-top:10px; padding:12px; border-radius:16px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+    }
+    .address b{display:block; font-size:13px}
+    .address span{display:block; font-size:13px; color:var(--muted)}
+
+    /* ===== CLEAN PROFESSIONAL GALLERY (FEATURED FIRST ROW) ===== */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-top:20px;
+      /* Base row height; featured items span 2 rows */
+      grid-auto-rows: 180px;
+    }
+    @media (max-width: 900px){
+      .gallery-grid{ grid-template-columns:1fr; grid-auto-rows: 220px; }
+    }
+    .gallery-item{
+      position:relative;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
+      background:#111827;
+      height:100%;
+      box-shadow: 0 15px 30px rgba(0,0,0,.35);
+    }
+    .gallery-item.featured{ grid-row: span 2; }
+    @media (max-width: 900px){
+      .gallery-item.featured{ grid-row: span 1; }
+    }
+    .gallery-item img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      background:#0b1020;
+      transition: transform .4s ease;
+      display:block;
+    }
+    .gallery-item:hover img{ transform: scale(1.06); }
+    .caption{
+      position:absolute;
+      bottom:0; left:0; right:0;
+      padding:14px;
+      background:linear-gradient(to top, rgba(0,0,0,.85), transparent);
+      color:white;
+    }
+    .caption b{display:block; font-size:14px}
+    .caption span{font-size:12px; opacity:.85}
+
+
+    footer{
+      border-top:1px solid var(--border);
+      margin-top:20px; padding:22px 0 10px; color:var(--muted);
+      font-size:12px;
+    }
+    .footbrand{display:flex; align-items:center; gap:10px}
+    .footbrand img{width:34px;height:34px;border-radius:10px;border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04)}
+  
+    .map-wrap iframe{ filter:saturate(1.05) contrast(1.05); }
+    .btn{ cursor:pointer; }
+
+    /* Shop */
+    .shop-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:20px;
+      margin-top:18px;
+    }
+    @media (max-width: 900px){
+      .shop-grid{ grid-template-columns:1fr; }
+    }
+    .shop-card{
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(17,24,39,.85);
+      box-shadow: 0 15px 30px rgba(0,0,0,.35);
+      padding:18px;
+      min-height: 160px;
+    }
+    .shop-card.featured{
+      grid-column: span 2;
+      padding:20px;
+    }
+    @media (max-width: 900px){
+      .shop-card.featured{ grid-column: span 1; }
+    }
+    .shop-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+    .shop-head h3{
+      margin:0;
+      font-size:16px;
+      line-height:1.25;
+    }
+    .shop-card .price{
+      font-weight:800;
+      font-size:16px;
+      white-space:nowrap;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .shop-card .muted{
+      margin:8px 0 0;
+      opacity:.9;
+      font-size:13px;
+      color: rgba(226,232,240,.9);
+    }
+    .shop-list{
+      margin:12px 0 0;
+      padding-left:18px;
+      color: rgba(226,232,240,.95);
+      font-size:13px;
+      line-height:1.35;
+    }
+    .shop-list li{ margin:6px 0; }
+    .shop-actions{
+      margin-top:14px;
+    }
+
+
+/* --- Shop photo lightbox --- */
+.shop-thumb{
+  width:100%;
+  border:1px solid rgba(255,255,255,.08);
+  background:rgba(0,0,0,.20);
+  border-radius:14px;
+  padding:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  cursor:pointer;
+  overflow:hidden;
+}
+.shop-thumb img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:10px;
+}
+.shop-thumb__hint{
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(0,0,0,.55);
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(8px);
+}
+.lightbox{
+  position:fixed;
+  inset:0;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(0,0,0,.65);
+  z-index:9999;
+}
+.lightbox.open{ display:flex; }
+.lightbox__panel{
+  width:min(980px, 100%);
+  max-height:calc(100vh - 40px);
+  background:rgba(10,14,26,.92);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 18px 60px rgba(0,0,0,.55);
+}
+.lightbox__top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px 16px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.lightbox__title{
+  font-weight:700;
+  font-size:14px;
+  opacity:.95;
+}
+.lightbox__close{
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  border-radius:10px;
+  padding:8px 10px;
+  cursor:pointer;
+}
+.lightbox__body{
+  padding:14px;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+.lightbox__main{
+  width:100%;
+  max-height:62vh;
+  object-fit:contain;
+  border-radius:14px;
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.08);
+}
+.lightbox__thumbs{
+  display:flex;
+  gap:10px;
+  overflow:auto;
+  padding-bottom:6px;
+}
+.lightbox__thumbs button{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  border-radius:12px;
+  padding:6px;
+  cursor:pointer;
+  flex:0 0 auto;
+}
+.lightbox__thumbs img{
+  height:72px;
+  width:auto;
+  display:block;
+  border-radius:8px;
+}
+.lightbox__thumbs button.active{
+  border-color: rgba(120,190,255,.55);
+  box-shadow:0 0 0 3px rgba(120,190,255,.14);
+}
+@media (min-width: 760px){
+  .lightbox__body{ padding:16px; }
+  .lightbox__thumbs img{ height:84px; }
+}
+
 </style>
 </head>
+
 <body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <img class="logo-img" src="logo.png" alt="DealFinder2018 Logo" />
+        <div>
+          <h1>DealFinder2018</h1>
+          <p>Lithium-ion battery repairs • UK</p>
+        </div>
+      </div>
 
-<h1>Battery Repair Gallery</h1>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#process">How it works</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#shop">Shop</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
-<div class="grid">
+      <a class="cta" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">WhatsApp quote</a>
+    </div>
+  </header>
 
-<div class="card"><img src="Ego.jpg" onclick="openGallery(0,0)"><h3>EGO 56V 7.5Ah</h3></div>
-<div class="card"><img src="Gtech.jpg" onclick="openGallery(1,0)"><h3>Gtech 48V</h3></div>
-<div class="card"><img src="makita36V.jpg" onclick="openGallery(2,0)"><h3>Makita BL3626 36V</h3></div>
-<div class="card"><img src="medical.jpg" onclick="openGallery(3,0)"><h3>Heartway Mobility</h3></div>
-<div class="card"><img src="Stiga.jpg" onclick="openGallery(4,0)"><h3>Stiga BT20Li 18V</h3></div>
-<div class="card"><img src="StihlAL.jpg" onclick="openGallery(5,0)"><h3>Stihl AS2 10.8V 2.6Ah</h3></div>
-<div class="card"><img src="stihlAP100.jpg" onclick="openGallery(6,0)"><h3>Stihl AP100</h3></div>
-<div class="card"><img src="stihlAP200.jpg" onclick="openGallery(7,0)"><h3>Stihl AP200</h3></div>
-<div class="card"><img src="vonhaus20V.jpg" onclick="openGallery(8,0)"><h3>VonHaus G Series 20V 1.5Ah</h3></div>
-<div class="card"><img src="vonhaus20V4ah.jpg" onclick="openGallery(9,0)"><h3>VonHaus G Series 20V 4Ah</h3></div>
+  <main class="wrap">
+    <section class="hero grid">
+      <div class="card">
+        <div class="badge"><i></i> Fast diagnostics • Clear communication • Quality rebuilds</div>
 
+        <h2>E‑Bike &amp; Lithium Battery Repair in Tamworth (6V–100V)</h2>
+        <p class="lead">
+          Specialising in e-bike, e-scooter, power bank and custom lithium pack diagnostics, rebuilds and BMS-level repairs.
+          If your pack won’t charge, cuts out under load, or has imbalance issues — I can diagnose and repair it.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">
+            WhatsApp quote
+          </a>
+          <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">
+            Email for quote
+          </a>
+          <a class="btn" href="#gallery">See previous work</a>
+        </div>
+
+        <div class="kpi">
+          <div class="pill">Diagnostics from £40</div>
+          <div class="pill">Minor repairs from £50</div>
+          <div class="pill">6V–100V packs</div>
+          <div class="pill">Tamworth, UK</div>
+        </div>
+
+        
+        <div class="address" aria-label="Service area" style="margin-top:12px">
+          <b>Based in</b>
+          <span>Tamworth (B77), UK — workshop address shared after booking (appointment only)</span>
+        </div>
+        <div class="small" style="margin-top:8px">
+          <b>Service options:</b>
+          <ul style="margin:8px 0 0 18px; padding:0; line-height:1.5">
+            <li><b>Local drop-off</b> (appointment only)</li>
+            <li><b>UK-wide postal repairs</b> (tracked shipping)</li>
+          </ul>
+        </div>
+
+
+        <p class="small">
+          Note: I may refuse severely damaged packs (e.g., fire damage or swollen/leaking cells) for safety and reliability.
+        </p>
+      </div>
+
+      <aside class="card">
+        <h3>Common issues I fix</h3>
+        <div class="list">
+          <div class="li">
+            <div class="dot"></div>
+            <div><b>Won’t charge / dead pack</b><span>Diagnostics, protection trips, wiring faults, cell failures.</span></div>
+          </div>
+          <div class="li">
+            <div class="dot"></div>
+            <div><b>Cuts out under load</b><span>High internal resistance cells, bad welds, weak groups.</span></div>
+          </div>
+          <div class="li">
+            <div class="dot"></div>
+            <div><b>Imbalance / low range</b><span>Cell matching, balancing, and rebuild options.</span></div>
+          </div>
+          <div class="li">
+            <div class="dot"></div>
+            <div><b>Connector / wiring damage</b><span>Repair harnesses, charge ports, discharge leads.</span></div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services" class="section">
+      <div class="card">
+        <h3>Services</h3>
+        <div class="cols">
+          <div class="mini">
+            <h4>Diagnostics &amp; health check</h4>
+            <p>Voltage checks, internal resistance checks, load testing, balancing check, fault isolation.</p>
+          </div>
+          <div class="mini">
+            <h4>Cell replacement / rebuilds</h4>
+            <p>Spot-welded nickel, clean layout, matched groups, verified under load.</p>
+          </div>
+          <div class="mini">
+            <h4>Balancing &amp; pack tuning</h4>
+            <p>Balancing support up to 24S and verification for stability.</p>
+          </div>
+          <div class="mini">
+            <h4>Wiring &amp; connector repairs</h4>
+            <p>Charge/discharge leads, ports, fuse lines, temperature probe wiring.</p>
+          </div>
+          <div class="mini">
+            <h4>BMS troubleshooting</h4>
+            <p>BMS fault finding and repair/replacement options where appropriate.</p>
+          </div>
+          <div class="mini">
+            <h4>Custom packs (quote)</h4>
+            <p>Tell me your voltage/space/current needs and I’ll advise options.</p>
+          </div>
+        </div>
+        <p class="note" style="margin-top:12px">
+          Lithium-ion packs only. (Other chemistries by agreement.)
+        </p>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="card">
+        <h3>How it works</h3>
+        <div class="two">
+          <div class="mini">
+            <h4>1) Message the details</h4>
+            <p>Send photos, pack voltage, device type, symptoms, and any error codes.</p>
+          </div>
+          <div class="mini">
+            <h4>2) Receive quote + options</h4>
+            <p>I’ll explain repair vs rebuild, likely costs, and turnaround.</p>
+          </div>
+          <div class="mini">
+            <h4>3) Post or drop off</h4>
+            <p>Use tracked shipping. I’ll confirm when it arrives and is inspected.</p>
+          </div>
+          <div class="mini">
+            <h4>4) Repair + test</h4>
+            <p>Work completed with verification and checks before return.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="card">
+        <h3>Pricing (guideline)</h3>
+        <div class="cols">
+          <div class="mini">
+            <h4>Diagnostics</h4>
+            <p>From <b>£40</b> (deducted from repair if you proceed).</p>
+          </div>
+          <div class="mini">
+            <h4>Minor repairs</h4>
+            <p>From <b>£50</b> (wiring, connectors, simple fixes).</p>
+          </div>
+          <div class="mini">
+            <h4>Rebuilds</h4>
+            <p>Quoted per pack (cell count, chemistry, BMS, labour).</p>
+          </div>
+        </div>
+        <p class="note" style="margin-top:12px">
+          Final price depends on pack condition and parts required. You’ll get a clear quote after diagnostics.
+        </p>
+      </div>
+    </section>
+
+    
+    <section id="gallery" class="section">
+      <div class="card">
+        <h3>Previous Work</h3>
+        <p class="note">
+          Real examples of lithium-ion diagnostics, high-voltage rebuilds and BMS-level repairs (6V–100V).
+        </p>
+
+        <div class="gallery-grid">
+
+          <div class="gallery-item featured">
+            <img src="gallery1.png" alt="High Voltage Battery Rebuild">
+            <div class="caption">
+              <b>High-Voltage Pack Rebuild</b>
+              <span>Full cell rebuild with integrated BMS ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item featured">
+            <img src="gallery2.png" alt="BMS Diagnostics">
+            <div class="caption">
+              <b>BMS Diagnostics</b>
+              <span>Board-level voltage testing & fault tracing ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="gallery3.png" alt="Corroded BMS Repair">
+            <div class="caption">
+              <b>Corroded BMS Repair</b>
+              <span>Water damage inspection & precision repair ✔</span>
+            </div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="gallery4.png" alt="Load & Discharge Testing">
+            <div class="caption">
+              <b>Load & Discharge Testing</b>
+              <span>Performance verification & curve analysis ✔</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <section id="faq" class="section">
+      <div class="card">
+        <h3>FAQ</h3>
+        <div class="list">
+          <div class="li">
+            <div class="dot"></div>
+            <div>
+              <b>What do you need to quote?</b>
+              <span>Device type, pack voltage, clear photos, symptoms, and whether it was stored for a long time.</span>
+            </div>
+          </div>
+
+          <div class="li">
+            <div class="dot"></div>
+            <div>
+              <b>Can you increase capacity?</b>
+              <span>Sometimes — depends on physical space, current requirements, and cell availability. Ask for options.</span>
+            </div>
+          </div>
+
+          <div class="li">
+            <div class="dot"></div>
+            <div>
+              <b>Do you repair water/fire damaged packs?</b>
+              <span>Usually no. For safety and reliability I may refuse packs with severe damage.</span>
+            </div>
+          </div>
+
+          <div class="li">
+            <div class="dot"></div>
+            <div>
+              <b>How long does it take?</b>
+              <span>Depends on the pack and parts availability. I’ll confirm after diagnostics.</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="note" style="margin-top:12px">
+          Disclaimer: Repairs involve used equipment and varying pack history. I test and verify, but no repair can guarantee original manufacturer performance.
+        </p>
+     
+    <section id="shop" class="section">
+      <div class="card">
+        <h2 style="margin:0 0 6px">Shop</h2>
+        <p class="note" style="margin-top:0">
+          Ready-to-ship workshop supplies and tested stock. Message to order or check availability.
+        </p>
+
+        <div class="shop-grid">
+          <div class="shop-card featured">
+            <div class="shop-head">
+              <h3>DealFinder LXT Diagnostic Interface</h3>
+              <div class="price">£45</div>
+            </div>
+            <p class="muted">For 18V LXT-compatible battery packs. Pre-assembled &amp; pre-programmed.</p>
+
+            <ul class="shop-list">
+              <li>Shows charge cycle count + battery model</li>
+              <li>Shows locked / unlocked status</li>
+              <li>Includes service unlock functionality for supported packs</li>
+              <li>Reads individual cell voltages + imbalance (high vs low)</li>
+              <li>Reads temperature sensor + pack voltage</li>
+              <li>Shows current battery error message + ROM ID</li>
+            </ul>
+
+            <p class="muted">
+              Includes: device (USB‑C), USB‑C to USB cable, software download link sent after purchase.
+            </p>
+
+            <div class="shop-actions">
+              <a class="btn primary" href="https://wa.me/447780073110?text=Hi%20I%20want%20to%20order%20the%20DealFinder%20LXT%20Diagnostic%20Interface%20(£45)" target="_blank" rel="noopener">Order / Ask a question</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Pure Nickel Strip (99.96%)</h3>
+              <div class="price">£18</div>
+            </div>
+            <p class="muted">10mm × 0.2mm × 2m – spot-welding grade.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20want%20to%20order%20Pure%20Nickel%20Strip%2010mm%20x%200.2mm%20x%202m%20(£18)" target="_blank" rel="noopener">Order</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Stihl Battery AS2 – 10.8V 2.6Ah</h3>
+              <div class="price">£42</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Stihl%20Battery%20AS2%2010.8V%202.6Ah%20(£42)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Heartway EBP21A071C1 Mobility Scooter Battery</h3>
+              <div class="price">£250</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Heartway%20EBP21A071C1%20Mobility%20Scooter%20Battery%20(£250)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Makita BL3626 – 36V 2.6Ah</h3>
+              <div class="price">£60</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Makita%20BL3626%2036V%202.6Ah%20(£60)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Stihl AP100 Battery</h3>
+              <div class="price">£95</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Stihl%20AP100%20Battery%20(£95)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>EGO Power+ 56V 7.5Ah Battery</h3>
+              <div class="price">£150</div>
+            </div>
+
+  <button class="shop-thumb" type="button"
+    data-title="EGO Power+ 56V 7.5Ah Battery"
+    data-images="EGO56V7_5Ah.jpg|EGO56V7_5Ah1.jpg|EGO56V7_5Ah2.jpg|EGO56V7_5Ah3.jpg"
+    aria-label="View photos: EGO Power+ 56V 7.5Ah Battery">
+    <img src="EGO56V7_5Ah.jpg" alt="EGO Power+ 56V 7.5Ah Battery photo">
+    <span class="shop-thumb__hint">View photos</span>
+  </button>
+<p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20EGO%20Power%2B%2056V%207.5Ah%20Battery%20(£150)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Gtech 200A001 – 48V 2000mAh</h3>
+              <div class="price">£75</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Gtech%20200A001%2048V%202000mAh%20(£75)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>Stiga BT20Li – 18V</h3>
+              <div class="price">£25</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20Stiga%20BT20Li%2018V%20Battery%20(£25)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>VonHaus 20V 1.5Ah (G Range)</h3>
+              <div class="price">£20</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20VonHaus%2020V%201.5Ah%20Battery%20(G%20Range)%20(£20)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+          <div class="shop-card">
+            <div class="shop-head">
+              <h3>VonHaus 20V 4.0Ah (G Range)</h3>
+              <div class="price">£45</div>
+            </div>
+            <p class="muted">Used – tested.</p>
+            <div class="shop-actions">
+              <a class="btn" href="https://wa.me/447780073110?text=Hi%20I%20am%20interested%20in%20VonHaus%2020V%204.0Ah%20Battery%20(G%20Range)%20(£45)" target="_blank" rel="noopener">Enquire</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+iv>
+      </div>
+    </section>
+
+<section id="contact" class="section">
+      <div class="card">
+        <h3>Contact / Quote request</h3>
+        <p class="note">Fastest: WhatsApp. Or email me with details + photos.</p>
+
+        
+        <div class="actions" style="margin:10px 0 6px">
+          <a class="btn primary" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">
+            WhatsApp quote
+          </a>
+          <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">
+            Email
+          </a>
+          <button class="btn" type="button" id="revealPhoneBtn">Show phone</button>
+          <a class="btn" id="callNowBtn" href="#" style="display:none">Call now</a>
+        </div>
+        <p class="small" id="phoneNote" style="margin-top:6px">
+          <span style="opacity:.85">Tip: WhatsApp is fastest. Phone shown to reduce spam scraping.</span>
+        </p>
+
+
+        <form action="mailto:arisztoi6@gmail.com" method="post" enctype="text/plain">
+          <div class="two">
+            <div>
+              <label>Your name</label>
+              <input name="name" placeholder="Your name" required />
+            </div>
+            <div>
+              <label>Phone (optional)</label>
+              <input name="phone" placeholder="07..." />
+            </div>
+          </div>
+
+          <div class="two">
+            <div>
+              <label>Email</label>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div>
+              <label>Pack/device type</label>
+              <input name="device" placeholder="e-bike / e-scooter / tool / power bank..." />
+            </div>
+          </div>
+
+          <label>Details (voltage, symptoms, photos link if you have one)</label>
+          <textarea name="details" placeholder="Example: 36V e-bike pack. Won't charge. Cuts out under load. Stored 6 months."></textarea>
+
+          <div class="actions" style="margin-top:12px">
+            <button class="btn primary" type="submit">Send request</button>
+            <a class="btn" href="https://wa.me/447780073110?text=Hi%20DealFinder2018%2C%20I%27d%20like%20a%20quote%20for%20a%20battery%20repair.%20Pack%20details%3A%20" target="_blank" rel="noopener">Send via WhatsApp</a>
+          </div>
+
+          <p class="small">
+            Tip: For the best quote, include clear photos of the label, connector, and inside (if safe to open), plus a photo of the charger.
+          </p>
+        </form>
+
+        
+      
+        <div class="address" style="margin-top:14px" aria-label="Service area">
+          <b>Based in</b>
+          <span>Tamworth (B77), UK — address shared after booking (appointment only)</span>
+        </div>
+
+        <div class="two" style="margin-top:12px; gap:12px">
+          <div class="card" style="padding:14px; background:rgba(255,255,255,.03)">
+            <b style="color:var(--text)">Service area</b>
+            <div class="small" style="margin-top:8px">
+              <ul style="margin:8px 0 0 18px; padding:0; line-height:1.55">
+                <li>Tamworth &amp; nearby (Lichfield, Atherstone, Sutton Coldfield)</li>
+                <li>Staffordshire / West Midlands</li>
+                <li>UK-wide postal repairs (tracked shipping)</li>
+              </ul>
+            </div>
+            <div class="small" style="margin-top:10px; opacity:.9">
+              For security, the exact workshop address is provided after we confirm the job.
+            </div>
+          </div>
+
+          <div class="card map-wrap" style="padding:0; overflow:hidden; background:rgba(255,255,255,.03)">
+            <iframe
+              title="Service area map (Tamworth)"
+              src="https://www.google.com/maps?q=Tamworth%20B77%20UK&output=embed"
+              width="100%" height="260"
+              style="border:0; display:block"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px; padding:14px; background:rgba(255,255,255,.03)">
+          <b style="color:var(--text)">Hours</b>
+          <div class="small" style="margin-top:8px; line-height:1.7">
+            Mon–Fri: 9:00–17:00 (messages anytime) <br/>
+            Sat: appointment only <br/>
+            Sun: closed
+          </div>
+        </div>
 </div>
+    </section>
 
-<div class="lightbox" id="lightbox">
-<span class="close" onclick="closeGallery()">&times;</span>
-<img id="lightbox-img">
-<div class="controls">
-<button onclick="prevImage()">Prev</button>
-<button onclick="nextImage()">Next</button>
-</div>
-</div>
+    <footer>
+      <div class="wrap" style="padding:0">
+        <div class="two" style="align-items:center">
+          <div class="footbrand">
+            <img src="logo.png" alt="DealFinder2018 Logo">
+            <div>
+              <b style="color:var(--text)">DealFinder2018</b><br/>
+              Tamworth (B77), UK • Appointment-only drop-off<br/>WhatsApp quote • Email: arisztoi6@gmail.com
+            </div>
+          </div>
+          <div style="text-align:right">
+            <span>© <span id="y"></span> DealFinder2018</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Local Business structured data (free SEO boost) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DealFinder2018",
+    "image": "https://arisztoi6.github.io/dealfinder2018/logo.png",
+    "url": "https://arisztoi6.github.io/dealfinder2018/",
+    "email": "arisztoi6@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tamworth",
+      "postalCode": "B77",
+      "addressCountry": "GB"
+    }
+  }
+  </script>
 
 <script>
-const galleries = [
-["Ego.jpg","Ego1.jpg","Ego2.jpg","Ego3.jpg"],
-["Gtech.jpg","Gtech1.jpg","Gtech4.jpg","Gtech3.jpg"],
-["makita36V.jpg","makita36V1.jpg","makita36V2.jpg","makita36V3.jpg","makita36V4.jpg"],
-["medical.jpg","medical1.jpg","medical2.jpg","medical3.jpg"],
-["Stiga.jpg","stiga1.jpg","stiga2.jpg","stiga3.jpg"],
-["StihlAL.jpg","StihlAL1.jpg","StihlAL2.jpg","StihlAL3.jpg"],
-["stihlAP100.jpg","stihlAP1001.jpg","stihlAP1002.jpg"],
-["stihlAP200.jpg","stihlAP2001.jpg","stihlAP2003.jpg","stihlAP2004.jpg"],
-["vonhaus20V.jpg","vonhaus20V1.jpg","vonhaus20V2.jpg","vonhaus20V3.jpg"],
-["vonhaus20V4ah.jpg","vonhaus20V4ah1.jpg","vonhaus20V4ah2.jpg"]
-];
+  // Simple anti-scrape: reveal number on click
+  (function(){
+    const revealBtn = document.getElementById('revealPhoneBtn');
+    const callBtn = document.getElementById('callNowBtn');
+    if(!revealBtn || !callBtn) return;
 
-let currentGallery = 0;
-let currentIndex = 0;
+    const parts = ["07780","073110"];
+    const display = parts.join(" ");
+    const tel = "+447780073110";
 
-function openGallery(galleryIndex, imageIndex){
-currentGallery = galleryIndex;
-currentIndex = imageIndex;
-document.getElementById("lightbox").style.display="flex";
-document.getElementById("lightbox-img").src=galleries[currentGallery][currentIndex];
-}
+    revealBtn.addEventListener('click', function(){
+      revealBtn.textContent = display;
+      revealBtn.setAttribute('aria-label', 'Phone number');
+      callBtn.style.display = "inline-flex";
+      callBtn.href = "tel:" + tel;
+    });
+  })();
+</script>
 
-function closeGallery(){
-document.getElementById("lightbox").style.display="none";
-}
+<!-- Shop Lightbox -->
+<div class="lightbox" id="shopLightbox" aria-hidden="true">
+  <div class="lightbox__panel" role="dialog" aria-modal="true" aria-labelledby="shopLightboxTitle">
+    <div class="lightbox__top">
+      <div class="lightbox__title" id="shopLightboxTitle">Photos</div>
+      <button class="lightbox__close" type="button" id="shopLightboxClose">Close</button>
+    </div>
+    <div class="lightbox__body">
+      <img class="lightbox__main" id="shopLightboxMain" alt="">
+      <div class="lightbox__thumbs" id="shopLightboxThumbs" aria-label="Photo thumbnails"></div>
+    </div>
+  </div>
+</div>
 
-function nextImage(){
-currentIndex=(currentIndex+1)%galleries[currentGallery].length;
-document.getElementById("lightbox-img").src=galleries[currentGallery][currentIndex];
-}
 
-function prevImage(){
-currentIndex=(currentIndex-1+galleries[currentGallery].length)%galleries[currentGallery].length;
-document.getElementById("lightbox-img").src=galleries[currentGallery][currentIndex];
-}
+<script>
+(function(){
+  const lightbox = document.getElementById('shopLightbox');
+  const titleEl = document.getElementById('shopLightboxTitle');
+  const mainImg = document.getElementById('shopLightboxMain');
+  const thumbs = document.getElementById('shopLightboxThumbs');
+  const closeBtn = document.getElementById('shopLightboxClose');
+
+  function openLightbox(btn){
+    const title = btn.getAttribute('data-title') || 'Photos';
+    const imagesRaw = btn.getAttribute('data-images') || '';
+    const images = imagesRaw.split('|').map(s => s.trim()).filter(Boolean);
+    if(!images.length) return;
+
+    titleEl.textContent = title;
+    mainImg.src = images[0];
+    mainImg.alt = title + ' photo';
+    thumbs.innerHTML = '';
+
+    images.forEach((src, idx) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'View photo ' + (idx+1));
+      const im = document.createElement('img');
+      im.src = src;
+      im.alt = '';
+      b.appendChild(im);
+      if(idx === 0) b.classList.add('active');
+      b.addEventListener('click', () => {
+        mainImg.src = src;
+        [...thumbs.querySelectorAll('button')].forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+      });
+      thumbs.appendChild(b);
+    });
+
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden','false');
+    closeBtn.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.shop-thumb');
+    if(btn){
+      openLightbox(btn);
+      return;
+    }
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  closeBtn.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+})();
 </script>
 
 </body>
