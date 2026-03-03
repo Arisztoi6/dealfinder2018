@@ -412,6 +412,25 @@
 }
 .verify-phone{font-size:16px}
 
+
+/* Button alignment fix */
+.shop-actions{
+  display:flex;
+  justify-content:center;
+}
+
+.shop-actions .btn{
+  width:100%;
+  text-align:center;
+}
+
+
+/* Align ONLY Gtech + Makita image/button level to match Heartway (no other changes) */
+.shop-grid .shop-card:nth-child(4) .shop-thumb,
+.shop-grid .shop-card:nth-child(5) .shop-thumb{
+  margin-top: 24px;
+}
+
 </style>
 </head>
 
@@ -706,6 +725,15 @@
               <div class="shop-title">Pure Nickel Strip 99.96%</div>
               <div class="shop-subtitle">10mm × 0.2mm × 2m</div>
               <div class="shop-price">£18</div>
+
+              <button class="shop-thumb" type="button" 
+                data-title="Pure Nickel Strip 99.96%" 
+                data-images="nickel2.jpeg|nickel.jpg|nickel1.jpg" 
+                aria-label="View photos: Pure Nickel Strip 99.96%">
+                <img src="nickel2.jpeg" alt="Pure Nickel Strip 99.96% photo">
+                <span class="shop-thumb-hint">View photos</span>
+              </button>
+
               <ul class="shop-bullets"><li>Spot welding grade</li><li>High conductivity</li><li>Suitable for lithium pack rebuilds</li></ul>
               
               <div class="shop-actions">
@@ -714,128 +742,138 @@
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="EGO Power+ 56V 7.5Ah Battery" data-images="Ego.jpg|Ego1.jpg|Ego2.jpg|Ego3.jpg" aria-label="View photos: EGO Power+ 56V 7.5Ah Battery">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">EGO Power+ 56V 7.5Ah Battery</div>
+              <div class="shop-subtitle">&nbsp;</div>
+              <div class="shop-price">£150</div>
+
+              <button class="shop-thumb" type="button" data-title="EGO Power+ 56V 7.5Ah Battery" data-images="Ego.jpg|Ego1.jpg|Ego2.jpg|Ego3.jpg" aria-label="View photos: EGO Power+ 56V 7.5Ah Battery">
               <img src="Ego.jpg" alt="EGO Power+ 56V 7.5Ah Battery photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">EGO Power+ 56V 7.5Ah Battery</div>
-              <div class="shop-price">£150</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Gtech 200A001 48V 2000mAh Battery" data-images="Gtech.jpg|Gtech1.jpg|Gtech4.jpg|Gtech3.jpg" aria-label="View photos: Gtech 200A001 48V 2000mAh Battery">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Gtech 200A001 48V 2000mAh Battery</div>
+              <div class="shop-price">£75</div>
+
+              <button class="shop-thumb" type="button" data-title="Gtech 200A001 48V 2000mAh Battery" data-images="Gtech.jpg|Gtech1.jpg|Gtech4.jpg|Gtech3.jpg" aria-label="View photos: Gtech 200A001 48V 2000mAh Battery">
               <img src="Gtech.jpg" alt="Gtech 200A001 48V 2000mAh Battery photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Gtech 200A001 48V 2000mAh Battery</div>
-              <div class="shop-price">£75</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Makita BL3626 36V 2.6Ah" data-images="makita36V.jpg|makita36V1.jpg|makita36V2.jpg|makita36V3.jpg|makita36V4.jpg" aria-label="View photos: Makita BL3626 36V 2.6Ah">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Makita BL3626 36V 2.6Ah</div>
+              <div class="shop-price">£60</div>
+
+              <button class="shop-thumb" type="button" data-title="Makita BL3626 36V 2.6Ah" data-images="makita36V.jpg|makita36V1.jpg|makita36V2.jpg|makita36V3.jpg|makita36V4.jpg" aria-label="View photos: Makita BL3626 36V 2.6Ah">
               <img src="makita36V.jpg" alt="Makita BL3626 36V 2.6Ah photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Makita BL3626 36V 2.6Ah</div>
-              <div class="shop-price">£60</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Heartway EBP21A071C1 Mobility Scooter Battery" data-images="medical.jpg|medical1.jpg|medical2.jpg|medical3.jpg" aria-label="View photos: Heartway EBP21A071C1 Mobility Scooter Battery">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Heartway EBP21A071C1 Mobility Scooter Battery</div>
+              <div class="shop-price">£250</div>
+
+              <button class="shop-thumb" type="button" data-title="Heartway EBP21A071C1 Mobility Scooter Battery" data-images="medical.jpg|medical1.jpg|medical2.jpg|medical3.jpg" aria-label="View photos: Heartway EBP21A071C1 Mobility Scooter Battery">
               <img src="medical.jpg" alt="Heartway EBP21A071C1 Mobility Scooter Battery photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Heartway EBP21A071C1 Mobility Scooter Battery</div>
-              <div class="shop-price">£250</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Stiga BT20Li 18V Battery" data-images="Stiga.jpg|stiga1.jpg|stiga2.jpg|stiga3.jpg" aria-label="View photos: Stiga BT20Li 18V Battery">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Stiga BT20Li 18V Battery</div>
+              <div class="shop-price">£25</div>
+
+              <button class="shop-thumb" type="button" data-title="Stiga BT20Li 18V Battery" data-images="Stiga.jpg|stiga1.jpg|stiga2.jpg|stiga3.jpg" aria-label="View photos: Stiga BT20Li 18V Battery">
               <img src="Stiga.jpg" alt="Stiga BT20Li 18V Battery photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Stiga BT20Li 18V Battery</div>
-              <div class="shop-price">£25</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Stihl Battery AS2 10.8V 2.6Ah" data-images="StihlAL.jpg|StihlAL1.jpg|StihlAL2.jpg|StihlAL3.jpg" aria-label="View photos: Stihl Battery AS2 10.8V 2.6Ah">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Stihl Battery AS2 10.8V 2.6Ah</div>
+              <div class="shop-price">£42</div>
+
+              <button class="shop-thumb" type="button" data-title="Stihl Battery AS2 10.8V 2.6Ah" data-images="StihlAL.jpg|StihlAL1.jpg|StihlAL2.jpg|StihlAL3.jpg" aria-label="View photos: Stihl Battery AS2 10.8V 2.6Ah">
               <img src="StihlAL.jpg" alt="Stihl Battery AS2 10.8V 2.6Ah photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Stihl Battery AS2 10.8V 2.6Ah</div>
-              <div class="shop-price">£42</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="Stihl AP100 Battery" data-images="stihlAP100.jpg|stihlAP1001.jpg|stihlAP1002.jpg" aria-label="View photos: Stihl AP100 Battery">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">Stihl AP100 Battery</div>
+              <div class="shop-price">£95</div>
+
+              <button class="shop-thumb" type="button" data-title="Stihl AP100 Battery" data-images="stihlAP100.jpg|stihlAP1001.jpg|stihlAP1002.jpg" aria-label="View photos: Stihl AP100 Battery">
               <img src="stihlAP100.jpg" alt="Stihl AP100 Battery photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">Stihl AP100 Battery</div>
-              <div class="shop-price">£95</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 1.5Ah Battery (G Range)" data-images="vonhaus20V.jpg|vonhaus20V1.jpg|vonhaus20V2.jpg|vonhaus20V3.jpg" aria-label="View photos: VonHaus G Series 20V 1.5Ah Battery (G Range)">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">VonHaus G Series 20V 1.5Ah Battery (G Range)</div>
+              <div class="shop-price">£20</div>
+
+              <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 1.5Ah Battery (G Range)" data-images="vonhaus20V.jpg|vonhaus20V1.jpg|vonhaus20V2.jpg|vonhaus20V3.jpg" aria-label="View photos: VonHaus G Series 20V 1.5Ah Battery (G Range)">
               <img src="vonhaus20V.jpg" alt="VonHaus G Series 20V 1.5Ah Battery (G Range) photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">VonHaus G Series 20V 1.5Ah Battery (G Range)</div>
-              <div class="shop-price">£20</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
     
-          <div class="shop-card">
-            <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 4.0Ah Battery (G Range)" data-images="vonhaus20V4ah.jpg|vonhaus20V4ah1.jpg|vonhaus20V4ah2.jpg" aria-label="View photos: VonHaus G Series 20V 4.0Ah Battery (G Range)">
+          <div class="shop-card"><div class="shop-card-body">
+              <div class="shop-title">VonHaus G Series 20V 4.0Ah Battery (G Range)</div>
+              <div class="shop-price">£45</div>
+
+              <button class="shop-thumb" type="button" data-title="VonHaus G Series 20V 4.0Ah Battery (G Range)" data-images="vonhaus20V4ah.jpg|vonhaus20V4ah1.jpg|vonhaus20V4ah2.jpg" aria-label="View photos: VonHaus G Series 20V 4.0Ah Battery (G Range)">
               <img src="vonhaus20V4ah.jpg" alt="VonHaus G Series 20V 4.0Ah Battery (G Range) photo">
               <span class="shop-thumb-hint">View photos</span>
             </button>
-            <div class="shop-card-body">
-              <div class="shop-title">VonHaus G Series 20V 4.0Ah Battery (G Range)</div>
-              <div class="shop-price">£45</div>
+
               <div class="shop-actions">
-                <a class="btn" href="#contact" target="_blank" rel="noopener">Enquire</a>
+                <a class="btn primary" href="#contact" target="_blank" rel="noopener">Order via WhatsApp</a>
               </div>
             </div>
           </div>
