@@ -156,6 +156,24 @@
     .verify-msg{color:#fca5a5; font-size:13px}
     .verify-reveal{margin-top:12px; padding:14px; border-radius:14px; background: rgba(255,255,255,.03); border: 1px solid var(--border)}
     .verify-phone{font-size:16px}
+
+    /* 🛡️ Anti-Download & Content Protection */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    img, video, canvas {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      pointer-events: none;
+    }
+    @media print {
+      body { display: none !important; }
+    }
   </style>
 </head>
 
@@ -270,13 +288,12 @@
       <p class="note">Workshop tools and diagnostic equipment for Makita LXT 18V batteries.</p>
 
       <div class="shop-grid">
-        <!-- ========== NEW: STANDALONE MAKITA TOOL (FEATURED) ========== -->
         <div class="shop-card featured">
           <div class="shop-card-body">
             <span class="shop-tag">⭐ NEW • STANDALONE • NO PC NEEDED</span>
             <div class="shop-title">Standalone Makita LXT Diagnostic &amp; Repair Tool</div>
             <div class="shop-subtitle">For all Makita 18V LXT batteries</div>
-            <div class="shop-price">£80</div>
+            <div class="shop-price">£POA</div>
 
             <button class="shop-thumb" type="button"
               data-title="Standalone Makita LXT Diagnostic & Repair Tool"
@@ -315,7 +332,6 @@
           </div>
         </div>
 
-        <!-- ========== ORIGINAL: OBI PC-BASED TOOL (UNCHANGED) ========== -->
         <div class="shop-card">
           <div class="shop-card-body">
             <span class="shop-tag pc">💻 PC-BASED • USB</span>
@@ -349,7 +365,6 @@
       </div>
     </div></section>
 
-    <!-- Shop Lightbox -->
     <div class="shop-lightbox" id="shopLightbox" aria-hidden="true">
       <button class="shop-lightbox-close" type="button" id="shopLightboxClose" aria-label="Close">×</button>
       <div class="shop-lightbox-inner">
@@ -370,6 +385,21 @@
         <a class="btn primary" href="#contact" target="_blank" rel="noopener">WhatsApp (verify below)</a>
         <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">Email: arisztoi6@gmail.com</a>
         <a class="btn" href="#contact">Call</a>
+      </div>
+
+      <div class="address"><b>Address</b><span>87 Stonepit, Tamworth, B77 1DW, UK</span></div>
+
+      <!-- 🗺️ DARK THEME GOOGLE MAP -->
+      <div style="margin:16px 0; border-radius:16px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow);">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.765!2d-1.6892!3d52.6188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c2d3e4f5a6b7%3A0x8c9d0e1f2a3b4c5d!2s87+Stonepit%2C+Tamworth+B77+1DW!5e0!3m2!1sen!2suk!4v1720987654321!5m2!1sen!2suk"
+          width="100%"
+          height="240"
+          style="border:0; filter: invert(92%) hue-rotate(180deg) contrast(90%);"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
 
       <div class="verify-card" id="verifyCard">
@@ -406,7 +436,6 @@
         </div>
         <p class="small">Tip: For the best quote, include clear photos of the label, connector, and inside (if safe to open), plus a photo of the charger.</p>
       </form>
-      <div class="address" style="margin-top:14px"><b>Address</b><span>87 Stonepit, Tamworth, B77 1DW, UK</span></div>
     </div></section>
 
     <footer>
@@ -523,6 +552,13 @@
     btn.addEventListener("click", verify);
     input.addEventListener("keydown", (e)=>{ if(e.key === "Enter") verify(); });
   })();
+  </script>
+  <script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && ['s','u','p','i','c'].includes(e.key.toLowerCase())) e.preventDefault();
+      if (e.key === 'F12') e.preventDefault();
+    });
   </script>
 </body>
 </html>
