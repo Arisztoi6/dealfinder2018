@@ -4,15 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>E-Bike &amp; Lithium Battery Repair Tamworth | DealFinder2018</title>
-  <meta name="description" content="Professional e-bike and lithium battery repair in Tamworth, UK. Diagnostics from £40. 6V–100V packs, rebuilds, re-celling and BMS repairs by DealFinder2018." />
-  <link rel="canonical" href="https://arisztoi6.github.io/dealfinder2018/" />
+  <title>Battery Diagnostic Tools &amp; Devices | DealFinder2018</title>
+  <meta name="description" content="Shop OBI and standalone battery diagnostic tools from DealFinder2018 in Tamworth, UK. Explore our devices and upcoming releases." />
+  <link rel="canonical" href="https://www.tamworthbatteryrepair.co.uk/" />
   <link rel="icon" type="image/png" href="logo.png" />
-  <meta property="og:title" content="DealFinder2018 | E-Bike & Lithium Battery Repair (Tamworth)" />
-  <meta property="og:description" content="Diagnostics from £40 • Minor repairs from £50 • 6V–100V lithium pack repairs, rebuilds, re-celling & BMS diagnostics." />
+  <meta property="og:title" content="DealFinder2018 | Battery Diagnostic Tools &amp; Devices" />
+  <meta property="og:description" content="OBI and standalone diagnostic tools. Explore our device range, upcoming releases and product support." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://arisztoi6.github.io/dealfinder2018/" />
-  <meta property="og:image" content="https://arisztoi6.github.io/dealfinder2018/logo.png" />
+  <meta property="og:url" content="https://www.tamworthbatteryrepair.co.uk/" />
+  <meta property="og:image" content="https://www.tamworthbatteryrepair.co.uk/logo.png" />
 
   <style>
     :root{
@@ -157,23 +157,24 @@
     .verify-reveal{margin-top:12px; padding:14px; border-radius:14px; background: rgba(255,255,255,.03); border: 1px solid var(--border)}
     .verify-phone{font-size:16px}
 
-    /* 🛡️ Anti-Download & Content Protection */
-    * {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
+    section[id], [id="standalone"], [id="obi"]{scroll-margin-top:125px}
+    .shop-thumb img{object-fit:contain;height:240px}
+    .shop-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+    button{font-family:inherit;color:var(--text)}
+    @media(max-width:600px){
+      .shop-grid{grid-template-columns:1fr}
+      .wrap{padding:18px 14px}.card{padding:18px}h2{font-size:30px}
+      .nav{flex-wrap:wrap;gap:10px}.nav nav{display:flex;order:3;width:100%}
+      nav a{padding:7px 9px}.brand p{font-size:11px}.cta{padding:9px 11px}
+      .shop-thumb img{height:210px}
     }
-    img, video, canvas {
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      pointer-events: none;
-    }
-    @media print {
-      body { display: none !important; }
-    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+    .hero{text-align:center}
+    .hero .lead, #support .lead{margin-left:auto;margin-right:auto}
+    .hero .actions, .hero .kpi{justify-content:center}
+    #shop > .card > h3, #shop > .card > .note,
+    #upcoming > .card > h3, #support > .card{text-align:center}
   </style>
 </head>
 
@@ -182,131 +183,46 @@
     <div class="wrap nav">
       <div class="brand">
         <img class="logo-img" src="logo.png" alt="DealFinder2018 Logo" />
-        <div><h1>DealFinder2018</h1><p>Lithium-ion battery repairs • UK</p></div>
+        <div><h1>DealFinder2018</h1><p>Diagnostic tools &amp; devices • UK</p></div>
       </div>
-      <nav>
-        <a href="#services">Services</a>
-        <a href="#process">How it works</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#faq">FAQ</a>
-        <a href="#shop">Shop</a>
-        <a href="#contact">Contact</a>
+      <nav aria-label="Main navigation">
+        <a href="#shop">Shop devices</a><a href="#support">Product support</a><a href="#upcoming">Coming soon</a>
       </nav>
-      <a class="cta" href="#contact" target="_blank" rel="noopener">WhatsApp quote</a>
+      <a class="cta" href="#shop">Shop devices</a>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero grid">
+    <section class="hero">
       <div class="card">
-        <div class="badge"><i></i> Fast diagnostics • Clear communication • Quality rebuilds</div>
-        <h2>E‑Bike &amp; Lithium Battery Repair in Tamworth (6V–100V)</h2>
-        <p class="lead">Specialising in e-bike, e-scooter, power bank and custom lithium pack diagnostics, rebuilds and BMS-level repairs. If your pack won’t charge, cuts out under load, or has imbalance issues — I can diagnose and repair it.</p>
-        <div class="actions">
-          <a class="btn primary" href="#contact" target="_blank" rel="noopener">WhatsApp (verify below)</a>
-          <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">Email for quote</a>
-          <a class="btn" href="#gallery">See previous work</a>
-        </div>
-        <div class="kpi">
-          <div class="pill">Diagnostics from £40</div>
-          <div class="pill">Minor repairs from £50</div>
-          <div class="pill">6V–100V packs</div>
-          <div class="pill">Tamworth, UK</div>
-        </div>
-        <div class="address"><b>Address</b><span>87 Stonepit, Tamworth, B77 1DW, UK</span></div>
-        <p class="small">Note: I may refuse severely damaged packs (e.g., fire damage or swollen/leaking cells) for safety and reliability.</p>
+        <h2>Diagnostic tools.<br>Built for your workbench.</h2>
+        <p class="lead">Explore our battery diagnostic devices, from the original OBI tool to the standalone diagnostic tool for Makita LXT 18V. More devices are on the way.</p>
+        <div class="actions"><a class="btn primary" href="#shop">Explore the devices</a></div>
+        <div class="kpi"><span class="pill">OBI USB tool</span><span class="pill">Standalone devices</span><span class="pill">Product support</span></div>
       </div>
-      <aside class="card">
-        <h3>Common issues I fix</h3>
-        <div class="list">
-          <div class="li"><div class="dot"></div><div><b>Won’t charge / dead pack</b><span>Diagnostics, protection trips, wiring faults, cell failures.</span></div></div>
-          <div class="li"><div class="dot"></div><div><b>Cuts out under load</b><span>High internal resistance cells, bad welds, weak groups.</span></div></div>
-          <div class="li"><div class="dot"></div><div><b>Imbalance / low range</b><span>Cell matching, balancing, and rebuild options.</span></div></div>
-          <div class="li"><div class="dot"></div><div><b>Connector / wiring damage</b><span>Repair harnesses, charge ports, discharge leads.</span></div></div>
-        </div>
-      </aside>
     </section>
 
-    <section id="services" class="section"><div class="card">
-      <h3>Services</h3>
-      <div class="cols">
-        <div class="mini"><h4>Diagnostics &amp; health check</h4><p>Voltage checks, internal resistance checks, load testing, balancing check, fault isolation.</p></div>
-        <div class="mini"><h4>Cell replacement / rebuilds</h4><p>Spot-welded nickel, clean layout, matched groups, verified under load.</p></div>
-        <div class="mini"><h4>Balancing &amp; pack tuning</h4><p>Balancing support up to 24S and verification for stability.</p></div>
-        <div class="mini"><h4>Wiring &amp; connector repairs</h4><p>Charge/discharge leads, ports, fuse lines, temperature probe wiring.</p></div>
-        <div class="mini"><h4>BMS troubleshooting</h4><p>BMS fault finding and repair/replacement options where appropriate.</p></div>
-        <div class="mini"><h4>Custom packs (quote)</h4><p>Tell me your voltage/space/current needs and I’ll advise options.</p></div>
-      </div>
-      <p class="note" style="margin-top:12px">Lithium-ion packs only. (Other chemistries by agreement.)</p>
-    </div></section>
-
-    <section id="process" class="section"><div class="card">
-      <h3>How it works</h3>
-      <div class="two">
-        <div class="mini"><h4>1) Message the details</h4><p>Send photos, pack voltage, device type, symptoms, and any error codes.</p></div>
-        <div class="mini"><h4>2) Receive quote + options</h4><p>I’ll explain repair vs rebuild, likely costs, and turnaround.</p></div>
-        <div class="mini"><h4>3) Post or drop off</h4><p>Use tracked shipping. I’ll confirm when it arrives and is inspected.</p></div>
-        <div class="mini"><h4>4) Repair + test</h4><p>Work completed with verification and checks before return.</p></div>
-      </div>
-    </div></section>
-
-    <section id="pricing" class="section"><div class="card">
-      <h3>Pricing (guideline)</h3>
-      <div class="cols">
-        <div class="mini"><h4>Diagnostics</h4><p>From <b>£40</b> (deducted from repair if you proceed).</p></div>
-        <div class="mini"><h4>Minor repairs</h4><p>From <b>£50</b> (wiring, connectors, simple fixes).</p></div>
-        <div class="mini"><h4>Rebuilds</h4><p>Quoted per pack (cell count, chemistry, BMS, labour).</p></div>
-      </div>
-      <p class="note" style="margin-top:12px">Final price depends on pack condition and parts required. You’ll get a clear quote after diagnostics.</p>
-    </div></section>
-
-    <section id="gallery" class="section"><div class="card">
-      <h3>Previous Work</h3>
-      <p class="note">Real examples of lithium-ion diagnostics, high-voltage rebuilds and BMS-level repairs (6V–100V).</p>
-      <div class="gallery-grid">
-        <div class="gallery-item featured"><img src="gallery1.png" alt="Battery repair collage 1"><div class="caption"><b>Repairs &amp; Rebuilds</b><span>Real work examples ✔</span></div></div>
-        <div class="gallery-item featured"><img src="gallery2.png" alt="Battery repair collage 2"><div class="caption"><b>Diagnostics</b><span>Testing &amp; troubleshooting ✔</span></div></div>
-        <div class="gallery-item featured"><img src="gallery3.png" alt="Battery repair collage 3"><div class="caption"><b>Pack Rebuilds</b><span>Cell layout &amp; BMS work ✔</span></div></div>
-        <div class="gallery-item featured"><img src="gallery4.png" alt="Battery repair collage 4"><div class="caption"><b>Verification</b><span>Final checks &amp; measurements ✔</span></div></div>
-      </div>
-    </div></section>
-
-    <section id="faq" class="section"><div class="card">
-      <h3>FAQ</h3>
-      <div class="list">
-        <div class="li"><div class="dot"></div><div><b>What do you need to quote?</b><span>Device type, pack voltage, clear photos, symptoms, and whether it was stored for a long time.</span></div></div>
-        <div class="li"><div class="dot"></div><div><b>Can you increase capacity?</b><span>Sometimes — depends on physical space, current requirements, and cell availability. Ask for options.</span></div></div>
-        <div class="li"><div class="dot"></div><div><b>Do you repair water/fire damaged packs?</b><span>Usually no. For safety and reliability I may refuse packs with severe damage.</span></div></div>
-        <div class="li"><div class="dot"></div><div><b>How long does it take?</b><span>Depends on the pack and parts availability. I’ll confirm after diagnostics.</span></div></div>
-      </div>
-      <p class="note" style="margin-top:12px">Disclaimer: Repairs involve used equipment and varying pack history. I test and verify, but no repair can guarantee original manufacturer performance.</p>
-    </div></section>
-
     <section id="shop" class="section"><div class="card">
-      <h3>Shop</h3>
-      <p class="note">Workshop tools and diagnostic equipment for Makita LXT 18V batteries.</p>
+      <h3>Shop devices</h3>
+      <p class="note">Choose your device. Contact us to order or ask about compatibility and delivery.</p>
 
       <div class="shop-grid">
-        <div class="shop-card featured">
+        <div class="shop-card featured" id="standalone">
           <div class="shop-card-body">
-            <span class="shop-tag">⭐ NEW • STANDALONE • NO PC NEEDED</span>
-            <div class="shop-title">Standalone Makita LXT Diagnostic &amp; Repair Tool</div>
-            <div class="shop-subtitle">For all Makita 18V LXT batteries</div>
+            <span class="shop-tag">STANDALONE • NO PC NEEDED</span>
+            <div class="shop-title">Standalone Diagnostic &amp; Repair Tool for Makita LXT 18V</div>
+            <div class="shop-subtitle">For supported Makita 18V LXT batteries</div>
             <div class="shop-price">£80</div>
 
             <button class="shop-thumb" type="button"
-              data-title="Standalone Makita LXT Diagnostic & Repair Tool"
+              data-title="Standalone Diagnostic &amp; Repair Tool for Makita LXT 18V"
               data-images="makita-standalone-01.png|makita-standalone-02.png|makita-standalone-03.png|makita-standalone-04.png|makita-standalone-05.png|makita-standalone-06.png|makita-standalone-07.png|makita-standalone-08.png"
-              aria-label="View photos: Standalone Makita LXT Tool">
-              <img src="makita-standalone-01.png" alt="Standalone Makita LXT Diagnostic Tool on battery">
+              aria-label="View photos: Standalone Diagnostic Tool for Makita LXT 18V">
+              <img src="makita-standalone-01.png" alt="Standalone Diagnostic Tool for Makita LXT 18V on battery">
               <span class="shop-thumb-hint">View 8 photos</span>
             </button>
 
-            <div class="shop-compare">
-              <b>Why this is better than cheap tools:</b><br>
-              Most tools only do a basic DA04 reset — which fails on deeper BMS memory corruption. This device writes corrected data directly to BMS memory to restore valid values.
-            </div>
+
 
             <ul class="shop-bullets">
               <li><b>100% standalone</b> — No PC, no software, no drivers, no internet required</li>
@@ -316,10 +232,10 @@
               <li>Detects battery lock conditions & memory errors</li>
               <li>Attempts repair of supported lock faults (beyond basic DA04)</li>
               <li>Advanced BMS memory diagnostics & frame write repair</li>
-              <li>Built-in rechargeable battery — <b>lasts 7+ months on one charge</b></li>
+              <li>Built-in rechargeable battery</li>
               <li>Simple one-button operation + rocker power switch</li>
               <li>Durable metal 16mm push button, custom PCB & unique firmware</li>
-              <li>Works with batteries many other tools cannot recognise</li>
+              <li>Readings and service functions depend on battery model</li>
             </ul>
 
             <div class="shop-limits">
@@ -327,12 +243,12 @@
             </div>
 
             <div class="shop-actions">
-              <a class="btn primary" href="https://wa.me/447780073110?text=Hi%2C%20I%27m%20interested%20in%20your%20STANDALONE%20Makita%20LXT%20Diagnostic%20%26%20Repair%20Tool.%20Please%20send%20price%20and%20details." target="_blank" rel="noopener">Order via WhatsApp</a>
+              <a class="btn primary" href="https://wa.me/447780073110?text=Hi%2C%20I%27m%20interested%20in%20your%20Standalone%20Diagnostic%20%26%20Repair%20Tool%20for%20Makita%20LXT%2018V.%20Please%20send%20price%20and%20details." target="_blank" rel="noopener">Order via WhatsApp</a>
             </div>
           </div>
         </div>
 
-        <div class="shop-card">
+        <div class="shop-card" id="obi">
           <div class="shop-card-body">
             <span class="shop-tag pc">💻 PC-BASED • USB</span>
             <div class="shop-title">OBI LXT Diagnostic Tool</div>
@@ -365,7 +281,7 @@
       </div>
     </div></section>
 
-    <div class="shop-lightbox" id="shopLightbox" aria-hidden="true">
+    <div class="shop-lightbox" id="shopLightbox" role="dialog" aria-modal="true" aria-labelledby="shopLightboxTitle" aria-hidden="true">
       <button class="shop-lightbox-close" type="button" id="shopLightboxClose" aria-label="Close">×</button>
       <div class="shop-lightbox-inner">
         <div class="shop-lightbox-title" id="shopLightboxTitle"></div>
@@ -378,92 +294,32 @@
       </div>
     </div>
 
-    <section id="contact" class="section"><div class="card">
-      <h3>Contact / Quote request</h3>
-      <p class="note">Fastest: WhatsApp. Or email me with details + photos.</p>
-      <div class="actions" style="margin:10px 0 6px">
-        <a class="btn primary" href="#contact" target="_blank" rel="noopener">WhatsApp (verify below)</a>
-        <a class="btn" href="mailto:arisztoi6@gmail.com?subject=Battery%20Repair%20Quote%20Request%20-%20DealFinder2018&body=Hi%20DealFinder2018%2C%0D%0A%0D%0ADevice%20type%3A%0D%0APack%20voltage%3A%0D%0ASymptoms%3A%0D%0AStored%20how%20long%3A%0D%0APhotos%20link%3A%0D%0A%0D%0AThanks%2C%0D%0A">Email: arisztoi6@gmail.com</a>
-        <a class="btn" href="#contact">Call</a>
+    <section id="upcoming" class="section"><div class="card">
+      <h3>Coming soon</h3>
+      <div class="two">
+        <article class="mini"><span class="shop-tag pc">Coming soon</span><h4>Standalone tool V3.0</h4><p>Our next standalone device is in development. Product details and ordering information will be added at launch.</p></article>
+        <article class="mini"><span class="shop-tag pc">Coming soon</span><h4>Hikoki Standalone diagnostic tool</h4><p>A new addition to our device range. Full specifications and availability will be announced at launch.</p></article>
       </div>
-
-      <div class="address"><b>Address</b><span>87 Stonepit, Tamworth, B77 1DW, UK</span></div>
-
-      <!-- 🗺️ DARK THEME GOOGLE MAP -->
-      <div style="margin:16px 0; border-radius:16px; overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow);">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2429.765!2d-1.6892!3d52.6188!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870c2d3e4f5a6b7%3A0x8c9d0e1f2a3b4c5d!2s87+Stonepit%2C+Tamworth+B77+1DW!5e0!3m2!1sen!2suk!4v1720987654321!5m2!1sen!2suk"
-          width="100%"
-          height="240"
-          style="border:0; filter: invert(92%) hue-rotate(180deg) contrast(90%);"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <div class="verify-card" id="verifyCard">
-        <div class="verify-title">Show phone / WhatsApp</div>
-        <div class="verify-sub">Quick check to reduce spam: <b>3 + 4</b> = ?</div>
-        <div class="verify-row">
-          <input type="number" id="verifyInput" inputmode="numeric" placeholder="Answer">
-          <button class="btn primary" type="button" id="verifyBtn">Submit</button>
-          <span class="verify-msg" id="verifyMsg"></span>
-        </div>
-      </div>
-      <div class="verify-reveal" id="verifyReveal" style="display:none;">
-        <div class="verify-phone"><b>Phone:</b> <span id="phoneText"></span></div>
-        <div class="actions" style="margin-top:10px">
-          <a class="btn primary" id="waLink" href="#" target="_blank" rel="noopener">Message on WhatsApp</a>
-          <a class="btn" id="telLink" href="#">Call</a>
-        </div>
-      </div>
-
-      <form action="mailto:arisztoi6@gmail.com" method="post" enctype="text/plain">
-        <div class="two">
-          <div><label>Your name</label><input name="name" placeholder="Your name" required /></div>
-          <div><label>Phone (optional)</label><input name="phone" placeholder="07..." /></div>
-        </div>
-        <div class="two">
-          <div><label>Email</label><input type="email" name="email" placeholder="you@example.com" required /></div>
-          <div><label>Pack/device type</label><input name="device" placeholder="e-bike / e-scooter / tool / power bank..." /></div>
-        </div>
-        <label>Details (voltage, symptoms, photos link if you have one)</label>
-        <textarea name="details" placeholder="Example: 36V e-bike pack. Won't charge. Cuts out under load. Stored 6 months."></textarea>
-        <div class="actions" style="margin-top:12px">
-          <button class="btn primary" type="submit">Send request</button>
-          <a class="btn" href="#contact" target="_blank" rel="noopener">Send via WhatsApp</a>
-        </div>
-        <p class="small">Tip: For the best quote, include clear photos of the label, connector, and inside (if safe to open), plus a photo of the charger.</p>
-      </form>
     </div></section>
 
-    <footer>
-      <div class="wrap" style="padding:0">
-        <div class="two" style="align-items:center">
-          <div class="footbrand">
-            <img src="logo.png" alt="DealFinder2018 Logo">
-            <div>
-              <b style="color:var(--text)">DealFinder2018</b><br/>
-              87 Stonepit, Tamworth, B77 1DW, UK<br/>
-              WhatsApp (verify below) • Email: arisztoi6@gmail.com
-            </div>
-          </div>
-          <div style="text-align:right"><span>© <span id="y"></span> DealFinder2018</span></div>
-        </div>
-      </div>
-    </footer>
+    <section id="support" class="section"><div class="card">
+      <h3>Your device. Its own guide.</h3>
+      <p class="lead">Scan the QR code supplied with your standalone device to open its online user manual.</p>
+      <p class="note">Each new device will have its own QR code and dedicated online manual.</p>
+    </div></section>
+
+
   </main>
 
-  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org", "@type": "LocalBusiness", "name": "DealFinder2018",
-    "image": "https://arisztoi6.github.io/dealfinder2018/logo.png",
-    "url": "https://arisztoi6.github.io/dealfinder2018/", "email": "arisztoi6@gmail.com",
-    "address": {"@type": "PostalAddress", "streetAddress": "87 Stonepit", "addressLocality": "Tamworth", "postalCode": "B77 1DW", "addressCountry": "UK"}
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "DealFinder2018",
+  "image": "https://www.tamworthbatteryrepair.co.uk/logo.png",
+  "url": "https://www.tamworthbatteryrepair.co.uk/"
+}
   </script>
 
   <script>
@@ -476,7 +332,7 @@
     const btnPrev = document.getElementById('shopPrevBtn');
     const btnNext = document.getElementById('shopNextBtn');
     if(!lb || !lbImg || !lbThumbs) return;
-    let imgs = [], idx = 0;
+    let imgs = [], idx = 0, opener = null;
     function render(){
       lbImg.src = imgs[idx] || '';
       lbImg.alt = (lbTitle.textContent || 'Battery photo') + ' photo ' + (idx+1);
@@ -490,13 +346,14 @@
       });
     }
     function open(title, images, startIndex){
+      opener = document.activeElement;
       lbTitle.textContent = title || 'Photos'; imgs = images || [];
       idx = Math.max(0, Math.min(startIndex || 0, imgs.length-1));
-      lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; render();
+      lb.setAttribute('aria-hidden','false'); document.body.style.overflow = 'hidden'; render(); btnClose.focus();
     }
     function close(){
       lb.setAttribute('aria-hidden','true'); document.body.style.overflow = '';
-      imgs = []; idx = 0; lbImg.src = '';
+      imgs = []; idx = 0; lbImg.removeAttribute('src'); if(opener) opener.focus();
     }
     function next(){ if(!imgs.length) return; idx = (idx + 1) % imgs.length; render(); }
     function prev(){ if(!imgs.length) return; idx = (idx - 1 + imgs.length) % imgs.length; render(); }
@@ -513,6 +370,12 @@
     lb.addEventListener('click', (e) => { if(e.target === lb) close(); });
     document.addEventListener('keydown', (e) => {
       if(lb.getAttribute('aria-hidden') === 'false'){
+        if(e.key === 'Tab'){
+          const focusable = Array.from(lb.querySelectorAll('button'));
+          const first = focusable[0], last = focusable[focusable.length-1];
+          if(e.shiftKey && document.activeElement === first){e.preventDefault();last.focus();}
+          else if(!e.shiftKey && document.activeElement === last){e.preventDefault();first.focus();}
+        }
         if(e.key === 'Escape') close();
         if(e.key === 'ArrowRight') next();
         if(e.key === 'ArrowLeft') prev();
@@ -521,44 +384,5 @@
   })();
   </script>
 
-  <script>
-  (function(){
-    const phoneHuman = "07780 073110";
-    const phoneTel   = "+447780073110";
-    const waNumber   = "447780073110";
-    const waText     = "Hi DealFinder2018, I'd like a quote for a battery repair. Pack details: ";
-    const input = document.getElementById("verifyInput");
-    const btn   = document.getElementById("verifyBtn");
-    const msg   = document.getElementById("verifyMsg");
-    const card  = document.getElementById("verifyCard");
-    const reveal= document.getElementById("verifyReveal");
-    const phone = document.getElementById("phoneText");
-    const wa    = document.getElementById("waLink");
-    const tel   = document.getElementById("telLink");
-    if(!btn || !input) return;
-    function verify(){
-      const v = String(input.value || "").trim();
-      if(v === "7"){
-        if(phone) phone.textContent = phoneHuman;
-        if(wa) wa.href = "https://wa.me/" + waNumber + "?text=" + encodeURIComponent(waText);
-        if(tel) tel.href = "tel:" + phoneTel;
-        if(card) card.style.display = "none";
-        if(reveal) reveal.style.display = "block";
-        if(msg) msg.textContent = "";
-      } else {
-        if(msg) msg.textContent = "Incorrect answer. Please try again.";
-      }
-    }
-    btn.addEventListener("click", verify);
-    input.addEventListener("keydown", (e)=>{ if(e.key === "Enter") verify(); });
-  })();
-  </script>
-  <script>
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('keydown', e => {
-      if ((e.ctrlKey || e.metaKey) && ['s','u','p','i','c'].includes(e.key.toLowerCase())) e.preventDefault();
-      if (e.key === 'F12') e.preventDefault();
-    });
-  </script>
 </body>
 </html>
