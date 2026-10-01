@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ESP32-S3 Standalone Diagnostic & Service Tool | User Manual</title>
+  <meta name="description" content="Official user manual for the ESP32-S3 touchscreen standalone battery diagnostic and service tool.">
+  <style>
+    :root{
+      --bg:#050914;
+      --panel:#0d1424;
+      --panel2:#121d31;
+      --line:#243654;
+      --text:#f3f7ff;
+      --muted:#aab8ce;
+      --cyan:#31d7ff;
+      --blue:#5b8cff;
+      --green:#4ce39a;
+      --yellow:#ffd166;
+      --orange:#ff9f43;
+      --red:#ff6678;
+      --magenta:#d986ff;
+      --shadow:0 14px 36px rgba(0,0,0,.28);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 50% -5%, rgba(49,215,255,.12), transparent 30rem),
+        var(--bg);
+      color:var(--text);
+      font:16px/1.58 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    }
+    a{color:var(--cyan);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(980px,calc(100% - 28px));margin:auto}
+    header{
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background:rgba(5,9,20,.88);
+      backdrop-filter:blur(10px);
+    }
+    .brand{display:flex;align-items:center;gap:16px;padding:18px 0}
+    .brand img{
+      width:84px;height:56px;object-fit:cover;border-radius:10px;
+      border:1px solid var(--line)
+    }
+    .brand h1{font-size:20px;margin:0 0 2px}
+    .brand p{margin:0;color:var(--muted);font-size:14px}
+    .brand .site{margin-left:auto;white-space:nowrap}
+    .hero{padding:52px 0 32px;text-align:center}
+    .badge{
+      display:inline-block;padding:7px 12px;border:1px solid rgba(49,215,255,.45);
+      border-radius:999px;color:var(--cyan);background:rgba(49,215,255,.07);
+      font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase
+    }
+    .hero h2{font-size:clamp(32px,6vw,56px);line-height:1.08;margin:18px auto 14px;max-width:850px}
+    .hero p{color:var(--muted);font-size:18px;max-width:720px;margin:0 auto}
+    .notice{
+      margin:26px auto 0;max-width:820px;text-align:left;padding:18px 20px;
+      border:1px solid rgba(255,209,102,.35);border-left:4px solid var(--yellow);
+      background:rgba(255,209,102,.07);border-radius:12px
+    }
+    nav.quick{
+      display:flex;gap:8px;overflow:auto;padding:10px 0 24px;
+      scrollbar-width:none
+    }
+    nav.quick a{
+      flex:none;padding:9px 13px;border:1px solid var(--line);border-radius:999px;
+      background:var(--panel);color:var(--text);font-size:13px
+    }
+    section{padding:28px 0;scroll-margin-top:16px}
+    .section-kicker{color:var(--cyan);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}
+    h3{font-size:30px;margin:4px 0 14px}
+    h4{font-size:19px;margin:0 0 8px}
+    p{margin:8px 0 14px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{
+      background:linear-gradient(180deg,rgba(18,29,49,.96),rgba(13,20,36,.96));
+      border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)
+    }
+    .card.cyan{border-top:3px solid var(--cyan)}
+    .card.blue{border-top:3px solid var(--blue)}
+    .card.green{border-top:3px solid var(--green)}
+    .card.yellow{border-top:3px solid var(--yellow)}
+    .card.orange{border-top:3px solid var(--orange)}
+    .card.magenta{border-top:3px solid var(--magenta)}
+    .card.red{border-top:3px solid var(--red)}
+    ul,ol{padding-left:22px}
+    li{margin:5px 0}
+    .steps{counter-reset:step;list-style:none;padding:0;margin:18px 0}
+    .steps li{
+      counter-increment:step;position:relative;padding:14px 16px 14px 54px;margin:9px 0;
+      border:1px solid var(--line);border-radius:12px;background:var(--panel)
+    }
+    .steps li:before{
+      content:counter(step);position:absolute;left:14px;top:12px;width:28px;height:28px;
+      display:grid;place-items:center;border-radius:50%;background:var(--cyan);color:#001018;font-weight:900
+    }
+    table{width:100%;border-collapse:collapse;margin:12px 0 6px}
+    th,td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    th{color:var(--cyan);font-size:13px}
+    .status{
+      display:inline-block;min-width:78px;text-align:center;padding:4px 8px;border-radius:999px;
+      font-size:12px;font-weight:900
+    }
+    .pass{background:rgba(76,227,154,.12);color:var(--green)}
+    .service{background:rgba(255,209,102,.12);color:var(--yellow)}
+    .check{background:rgba(255,159,67,.12);color:var(--orange)}
+    .hardware{background:rgba(255,102,120,.12);color:var(--red)}
+    .unknown{background:rgba(170,184,206,.12);color:var(--muted)}
+    .warning{
+      padding:14px 16px;border-radius:10px;background:rgba(255,102,120,.08);
+      border:1px solid rgba(255,102,120,.28);color:#ffd9de
+    }
+    .tip{
+      padding:14px 16px;border-radius:10px;background:rgba(49,215,255,.07);
+      border:1px solid rgba(49,215,255,.25)
+    }
+    details{
+      border:1px solid var(--line);border-radius:12px;background:var(--panel);
+      padding:0 15px;margin:10px 0
+    }
+    summary{cursor:pointer;padding:14px 0;font-weight:800}
+    details > div{padding:0 0 14px;color:var(--muted)}
+    code{background:#050a14;border:1px solid var(--line);padding:2px 5px;border-radius:5px}
+    footer{
+      margin-top:32px;padding:30px 0 44px;border-top:1px solid rgba(255,255,255,.08);
+      color:var(--muted);text-align:center;font-size:14px
+    }
+    .toplink{display:inline-block;margin-top:10px}
+    @media(max-width:760px){
+      .brand img{width:70px;height:48px}
+      .brand .site{display:none}
+      .hero{padding-top:38px}
+      .grid,.grid.three{grid-template-columns:1fr}
+      h3{font-size:26px}
+      table{font-size:14px}
+      th,td{padding:9px 7px}
+    }
+  </style>
+</head>
+<body id="top">
+
+<header>
+  <div class="wrap brand">
+    <img src="/logo.png" alt="DealFinder2018 logo">
+    <div>
+      <h1>DealFinder2018</h1>
+      <p>Diagnostic tools &amp; devices • UK</p>
+    </div>
+    <a class="site" href="/">Main website</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <span class="badge">Official Instruction Manual</span>
+    <h2>ESP32-S3 Standalone Diagnostic &amp; Service Tool</h2>
+    <p>Touchscreen battery diagnostics, Makita LXT service functions, Bluetooth Smart BMS support and built-in workshop utilities — all from one standalone device.</p>
+
+    <div class="notice">
+      <strong>Important:</strong> Service and Smart BMS control functions can write data or settings to a battery management system. Only use a write/service function on the intended battery and do not disconnect the battery or power off the device while a write is in progress.
+    </div>
+  </div>
+
+  <nav class="quick" aria-label="Manual sections">
+    <a href="#start">Quick start</a>
+    <a href="#home">Home screen</a>
+    <a href="#makita">Makita LXT</a>
+    <a href="#smartbms">Smart BMS</a>
+    <a href="#multitool">Multitool</a>
+    <a href="#device">Device</a>
+    <a href="#charging">Charging</a>
+    <a href="#troubleshooting">Troubleshooting</a>
+  </nav>
+
+  <section id="start">
+    <div class="section-kicker">Introduction</div>
+    <h3>Compatibility &amp; Quick Start</h3>
+
+    <div class="grid">
+      <div class="card cyan">
+        <h4>The device can</h4>
+        <ul>
+          <li>Read supported Makita LXT battery information</li>
+          <li>Display pack voltage, individual cell groups and imbalance</li>
+          <li>Display temperature, cycle and identification data when available</li>
+          <li>Detect charger-lock, stored BMS faults and memory/checksum problems</li>
+          <li>Run guarded Makita service/recovery functions on supported batteries</li>
+          <li>Scan and communicate with supported Bluetooth Smart BMS systems</li>
+          <li>Provide workshop tools including Wi-Fi, BLE, sound meter, calculator and timer</li>
+        </ul>
+      </div>
+
+      <div class="card yellow">
+        <h4>The device cannot repair</h4>
+        <ul>
+          <li>Dead or internally shorted cells</li>
+          <li>Physically damaged cell connections or sense wiring</li>
+          <li>Blown fuses</li>
+          <li>Failed temperature sensors</li>
+          <li>Water, fire or impact damage</li>
+          <li>Burnt or physically damaged BMS electronics</li>
+        </ul>
+      </div>
+    </div>
+
+    <h4 style="margin-top:22px">First use</h4>
+    <ol class="steps">
+      <li>Power on the device and allow the startup screen to finish.</li>
+      <li>Choose <strong>STANDARD</strong> or <strong>PERSONALIZED</strong> setup. Personalized mode lets you add a name and choose the sound level.</li>
+      <li>From the Home screen choose <strong>MAKITA LXT</strong>, <strong>SMART BMS</strong>, <strong>MULTITOOL</strong> or <strong>DEVICE</strong>.</li>
+      <li>For Makita diagnostics, connect the supported battery and select <strong>SCAN BATTERY</strong>.</li>
+      <li>For a Bluetooth BMS, wake the BMS/Bluetooth module and start with <strong>SMART BMS → AUTO DETECT</strong>.</li>
+    </ol>
+
+    <div class="warning">
+      Do not use the device on a battery that is swollen, leaking, excessively hot, burnt or mechanically damaged. A successful electronic read or reset does not prove that the cells are safe or that the battery has passed a load test.
+    </div>
+  </section>
+
+  <section id="home">
+    <div class="section-kicker">Main Menu</div>
+    <h3>Home Screen</h3>
+
+    <div class="grid">
+      <div class="card cyan">
+        <h4>MAKITA LXT</h4>
+        <p>Battery scan, service functions and advanced Makita diagnostic tools.</p>
+      </div>
+      <div class="card blue">
+        <h4>SMART BMS</h4>
+        <p>Bluetooth BMS auto-detection, family selection, live data and supported service controls.</p>
+      </div>
+      <div class="card green">
+        <h4>MULTITOOL</h4>
+        <p>Wi-Fi Analyzer, BLE Explorer, Sound Meter, Calculator, Timer and Games.</p>
+      </div>
+      <div class="card">
+        <h4>DEVICE</h4>
+        <p>Internal battery status, sound/volume, profile, screen auto-off and device reset options.</p>
+      </div>
+    </div>
+
+    <p class="muted">The small battery icon at the top of the display shows the internal rechargeable battery level.</p>
+  </section>
+
+  <section id="makita">
+    <div class="section-kicker">Battery Service</div>
+    <h3>Makita LXT</h3>
+
+    <div class="grid three">
+      <div class="card cyan">
+        <h4>SCAN BATTERY</h4>
+        <p>Reads the connected battery and opens the diagnostic information pages.</p>
+      </div>
+      <div class="card yellow">
+        <h4>SERVICE CENTER</h4>
+        <p>Shows guarded service/recovery options when the battery family and condition allow them.</p>
+      </div>
+      <div class="card magenta">
+        <h4>TEST LAB</h4>
+        <p>Advanced diagnostic functions for experienced users.</p>
+      </div>
+    </div>
+
+    <h4 style="margin-top:24px">Information available after a scan</h4>
+    <div class="card">
+      <ul>
+        <li>Battery model and detected family</li>
+        <li>Nominal capacity and recorded charge cycles where available</li>
+        <li>Pack voltage</li>
+        <li>Individual cell-group voltages — 5-cell or supported 10-cell packs</li>
+        <li>Highest-to-lowest cell difference</li>
+        <li>Battery temperature sensors when available</li>
+        <li>Manufacturing/assembly information and ROM identity where supported</li>
+        <li>Stored fault, charger-lock and memory/checksum diagnostics</li>
+        <li>Additional counters and history data where the battery family provides them</li>
+      </ul>
+    </div>
+
+    <h4 style="margin-top:24px">Battery result status</h4>
+    <table>
+      <thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td><span class="status pass">PASS</span></td><td>No fault was detected in the data currently available to the device.</td></tr>
+        <tr><td><span class="status service">SERVICE</span></td><td>A charger-lock or stored BMS condition was detected and a supported service function may be available.</td></tr>
+        <tr><td><span class="status check">CHECK</span></td><td>A caution condition was detected, such as a low cell, higher imbalance or stored history that should be investigated.</td></tr>
+        <tr><td><span class="status hardware">HARDWARE</span></td><td>The readings indicate a likely physical battery problem such as a weak/dead group, sense issue, major imbalance or temperature-sensor fault.</td></tr>
+        <tr><td><span class="status unknown">UNKNOWN</span></td><td>The device did not receive enough valid live information to give a reliable result.</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      <strong>PASS is not a load test.</strong> It means the values and BMS information observed during the scan did not show a fault. Capacity and high-current performance still require appropriate battery testing.
+    </div>
+
+    <h4 style="margin-top:24px">Service Center</h4>
+    <p>The available buttons depend on the detected battery type and condition. The current firmware includes:</p>
+    <ul>
+      <li><strong>SMART RECOVERY</strong> — automatic guarded recovery sequence for supported service conditions</li>
+      <li><strong>DA04 ERROR RESET</strong> — targeted reset for supported batteries</li>
+      <li><strong>SAFE FRAME UNLOCK</strong> — guarded frame-based unlock where compatible</li>
+      <li><strong>LEGACY DEEP RECOVERY</strong> — advanced recovery for eligible older battery families</li>
+    </ul>
+
+    <div class="warning">
+      If the device reports <strong>HARDWARE</strong>, inspect and repair the physical battery fault before attempting BMS recovery. Service functions are intentionally blocked or limited on unsupported or unsafe conditions.
+    </div>
+
+    <h4 style="margin-top:24px">Test Lab</h4>
+    <div class="grid">
+      <div class="card green"><h4>LED TEST</h4><p>Controls supported pack indicator LEDs for diagnostic testing.</p></div>
+      <div class="card orange"><h4>DEBUG 10</h4><p>Ten-page legacy diagnostic view for deeper battery information.</p></div>
+      <div class="card cyan"><h4>RAW FRAME</h4><p>Read-only view of the 32-byte battery memory frame when available.</p></div>
+      <div class="card yellow"><h4>CHARGER</h4><p>Read-only pre-flight check of battery information relevant to charger operation.</p></div>
+      <div class="card magenta"><h4>LIVE GRAPH</h4><p>Live minimum/maximum cell trend and cell-spread monitoring.</p></div>
+      <div class="card cyan"><h4>USB OBI</h4><p>Turns the device into a PC-connected OBI-compatible USB bridge. Use a USB-C data cable.</p></div>
+    </div>
+
+    <p class="muted">Selected older 10-cell / 36V battery families are supported for diagnostics only. Where the device reports read-only operation, service writes are intentionally disabled.</p>
+  </section>
+
+  <section id="smartbms">
+    <div class="section-kicker">Wireless Diagnostics</div>
+    <h3>Smart BMS</h3>
+
+    <p>The Smart BMS section scans nearby Bluetooth devices and can automatically identify supported BMS families. For best results, start with <strong>AUTO DETECT</strong>.</p>
+
+    <ol class="steps">
+      <li>Make sure the battery/BMS is awake and Bluetooth is active.</li>
+      <li>Open <strong>SMART BMS</strong> and select <strong>AUTO DETECT</strong>.</li>
+      <li>Wait for the scan and select the correct BMS from the detected-device list.</li>
+      <li>Review the overview and cell pages before opening any service page.</li>
+      <li>Any supported write/control operation will require confirmation. After supported writes, the device rereads or verifies the result where the protocol allows it.</li>
+    </ol>
+
+    <h4>Confirmed enhanced support in the current firmware</h4>
+    <table>
+      <thead><tr><th>BMS family</th><th>Available functions</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>ECBMS / EC-xxxx</strong></td>
+          <td>Live diagnostics, cells, protection/settings pages, charge/discharge control, one-click balance, 22 captured numeric settings, LFP/LTO/NCM presets, reset-current function and guarded numeric password change.</td>
+        </tr>
+        <tr>
+          <td><strong>Daly Classic</strong></td>
+          <td>BLE diagnostics and supported service controls including charge/discharge MOS control and SOC adjustment.</td>
+        </tr>
+        <tr>
+          <td><strong>JK / Jikong</strong></td>
+          <td>JK04/JK02 telemetry and cell data. JK02 supports confirmed charge, discharge and balancer controls. JK04 service writes are intentionally limited to the supported balancer control.</td>
+        </tr>
+        <tr>
+          <td><strong>Overkill Pathfinder / Nomad</strong></td>
+          <td>Official BLE API diagnostics, cells, charge/discharge commands, zero-current calibration when safe, alarm-count reset and session min/max reset.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="tip">
+      The Smart BMS menu contains additional BMS-family names for detection and compatibility work. Support varies by hardware generation and protocol. A family appearing in the menu does not guarantee that every read or write feature is available on every BMS.
+    </div>
+
+    <h4 style="margin-top:24px">ECBMS settings</h4>
+    <p>ECBMS settings pages can read protection and operating parameters. Supported parameter changes show the old value and the proposed new value, require confirmation, authenticate with the BMS where required, then reread the BMS to verify the returned value.</p>
+
+    <div class="warning">
+      Do not change protection thresholds simply because an editable field is available. Record the original values first and only use values suitable for the exact cell chemistry, series count, cell specification and battery design.
+    </div>
+
+    <h4 style="margin-top:24px">If Auto Detect does not find the BMS</h4>
+    <ul>
+      <li>Wake the battery/BMS and retry the scan</li>
+      <li>Move the tool closer to the battery</li>
+      <li>Close the manufacturer's phone app so it is not holding the BLE connection</li>
+      <li>Select the BMS family manually if known</li>
+      <li>Use <strong>MULTITOOL → BLE EXPLORER</strong> to confirm that the Bluetooth device is advertising</li>
+    </ul>
+  </section>
+
+  <section id="multitool">
+    <div class="section-kicker">Workshop Utilities</div>
+    <h3>Multitool</h3>
+
+    <div class="grid">
+      <div class="card cyan">
+        <h4>Wi-Fi Analyzer</h4>
+        <p>Scans nearby 2.4 GHz Wi-Fi networks and shows SSID, signal strength, channel and security information. A channel view helps identify congestion.</p>
+      </div>
+      <div class="card blue">
+        <h4>BLE Explorer</h4>
+        <p>Scans nearby Bluetooth Low Energy devices, shows signal strength and useful advertising/service information, and highlights devices newly seen since the previous scan.</p>
+      </div>
+      <div class="card green">
+        <h4>Sound Meter</h4>
+        <p>Uses the onboard microphone to show a relative dBFS level. This is a workshop indication only and is <strong>not</strong> a calibrated sound-pressure-level meter.</p>
+      </div>
+      <div class="card yellow">
+        <h4>Calculator</h4>
+        <p>Touchscreen calculator with basic arithmetic, decimal entry, sign change, backspace and clear.</p>
+      </div>
+      <div class="card orange">
+        <h4>Timer</h4>
+        <p>Add 1, 5 or 10 minutes, set a custom time, pause/resume and reset. An audible alert is played at the end when sound is enabled.</p>
+      </div>
+      <div class="card magenta">
+        <h4>Games</h4>
+        <p>Snake and Reaction Test with saved Top-5 scores. Personalized mode uses the owner name by default; a temporary new player can also be entered.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="device">
+    <div class="section-kicker">Device Settings</div>
+    <h3>Device Menu</h3>
+
+    <div class="card">
+      <table>
+        <tbody>
+          <tr><th>Internal Li-Po</th><td>Shows live internal battery voltage and estimated charge percentage.</td></tr>
+          <tr><th>Sound / Volume</th><td>Choose QUIET 0%, NORMAL 30%, LOUD 70% or MAX 100%. The setting is saved automatically.</td></tr>
+          <tr><th>AUTO / NO AUTO</th><td>Enables or disables the normal 3-minute screen auto-off.</td></tr>
+          <tr><th>OFF</th><td>Turns the screen/backlight off. Touch the screen to wake the device.</td></tr>
+          <tr><th>PROFILE</th><td>Switch between Standard and Personalized setup, including name and sound preference.</td></tr>
+          <tr><th>RESET</th><td>Clears the saved profile and game high scores and returns the device to first-run setup.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="muted">Factory reset does not remove the firmware. It resets user/profile data and saved game records.</p>
+  </section>
+
+  <section id="charging">
+    <div class="section-kicker">Power &amp; Charging</div>
+    <h3>Internal Battery, Charging &amp; Screen Sleep</h3>
+
+    <div class="grid">
+      <div class="card green">
+        <h4>USB-C charging</h4>
+        <p>Connect a suitable USB-C power source. The device automatically detects a charging session and shows the charging screen with the internal battery level and live voltage.</p>
+      </div>
+      <div class="card cyan">
+        <h4>Charge complete</h4>
+        <p>When the device detects a completed charge it shows <strong>FULL / CHARGE COMPLETE</strong>. The normal top-right battery icon also reflects the internal battery level.</p>
+      </div>
+    </div>
+
+    <h4 style="margin-top:24px">Charging screen</h4>
+    <p>When a charger is detected, the charging display appears automatically. After the short charging-status display period, the screen can switch off while charging continues. This is normal and reduces unnecessary display power use.</p>
+
+    <h4>3-minute auto-off</h4>
+    <p>With <strong>AUTO</strong> enabled, the display switches off after approximately three minutes without user activity. Touching the screen wakes the display and returns to the Home screen.</p>
+
+    <div class="tip">
+      The percentage shown while charging is intentionally based on the pre-charge battery state and charging session, rather than simply treating the raised USB charging voltage as an immediate jump to 100%.
+    </div>
+  </section>
+
+  <section id="troubleshooting">
+    <div class="section-kicker">Help</div>
+    <h3>Common Problems</h3>
+
+    <details open>
+      <summary>Device does not turn on / screen is black</summary>
+      <div>
+        Charge the internal battery through USB-C. If the screen switched off through AUTO mode or the OFF button, touch the display to wake it. Try a different USB-C cable and power source if charging is not detected.
+      </div>
+    </details>
+
+    <details>
+      <summary>Makita battery is not detected</summary>
+      <div>
+        Remove and reconnect the battery, check the battery terminals/adapter, then scan again. The battery may be unsupported, deeply faulty or unable to provide valid BMS communication. Do not repeatedly attempt service writes if the basic scan cannot complete.
+      </div>
+    </details>
+
+    <details>
+      <summary>Result shows HARDWARE</summary>
+      <div>
+        A likely physical pack problem was detected. Investigate the reported condition — for example cell group, sense wiring, imbalance or thermistor — before using BMS recovery functions.
+      </div>
+    </details>
+
+    <details>
+      <summary>Service function is unavailable</summary>
+      <div>
+        The device only enables service functions when the detected battery family and current condition meet the firmware's safety checks. Some 10-cell/36V and special battery types are intentionally read-only.
+      </div>
+    </details>
+
+    <details>
+      <summary>Smart BMS scan finds nothing</summary>
+      <div>
+        Wake the BMS, move the tool closer, disconnect the manufacturer's phone app, then rescan. If necessary use BLE Explorer to confirm that the BMS is advertising.
+      </div>
+    </details>
+
+    <details>
+      <summary>Smart BMS connects but data is incomplete</summary>
+      <div>
+        BMS manufacturers often use multiple protocol generations under the same brand name. Retry the read, confirm the correct family selection and use Auto Detect where possible. Not every BMS generation exposes the same data or controls.
+      </div>
+    </details>
+
+    <details>
+      <summary>Touchscreen appears frozen</summary>
+      <div>
+        Allow any active battery read, BMS write or BLE operation to finish. If no operation is active and the device remains unresponsive, restart the device. Never interrupt a confirmed battery/BMS write unless absolutely necessary.
+      </div>
+    </details>
+
+    <details>
+      <summary>USB OBI bridge does not appear on the PC</summary>
+      <div>
+        Use a USB-C <strong>data</strong> cable rather than a charge-only cable. Open <strong>MAKITA LXT → TEST LAB → USB OBI</strong> before starting the PC software.
+      </div>
+    </details>
+
+    <div class="warning" style="margin-top:20px">
+      If a battery is damaged, overheated, swollen, wet, burnt, internally shorted or otherwise physically unsafe, stop using electronic reset/service functions. The device cannot make a physically unsafe battery safe.
+    </div>
+  </section>
+
+
+</main>
+
+
+
+</body>
+</html>
