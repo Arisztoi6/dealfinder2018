@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>Diagnostic & Service Tool | User Manual</title>
-  <meta name="description" content="Official user manual for the Standalone battery diagnostic and service tool.">
+  <title>ESP32-S3 Standalone Diagnostic & Service Tool | User Manual</title>
+  <meta name="description" content="Official user manual for the ESP32-S3 touchscreen standalone battery diagnostic and service tool.">
   <style>
     :root{
       --bg:#050914;
@@ -159,8 +159,7 @@
 <main class="wrap">
   <div class="hero">
     <span class="badge">Official Instruction Manual</span>
-    <h2>Standalone Diagnostic &amp; Service Tool</h2>
-    <p>Touchscreen battery diagnostics, Makita LXT service functions, Bluetooth Smart BMS support and built-in workshop utilities — all from one standalone device.</p>
+        <p>Touchscreen battery diagnostics, Makita LXT service functions, Bluetooth Smart BMS support and built-in workshop utilities — all from one standalone device.</p>
 
     <div class="notice">
       <strong>Important:</strong> Service and Smart BMS control functions can write data or settings to a battery management system. Only use a write/service function on the intended battery and do not disconnect the battery or power off the device while a write is in progress.
@@ -212,7 +211,7 @@
     <h4 style="margin-top:22px">First use</h4>
     <ol class="steps">
       <li>Power on the device and allow the startup screen to finish.</li>
-      <li>Choose <strong>STANDARD</strong> or <strong>PERSONALIZED</strong> setup. Personalized mode lets you add a name and choose the sound level.</li>
+      <li>Choose <strong>STANDARD</strong> or <strong>PERSONALIZED</strong> setup. Personalized mode lets you add a name.</li>
       <li>From the Home screen choose <strong>MAKITA LXT</strong>, <strong>SMART BMS</strong>, <strong>MULTITOOL</strong> or <strong>DEVICE</strong>.</li>
       <li>For Makita diagnostics, connect the supported battery and select <strong>SCAN BATTERY</strong>.</li>
       <li>For a Bluetooth BMS, wake the BMS/Bluetooth module and start with <strong>SMART BMS → AUTO DETECT</strong>.</li>
@@ -242,7 +241,7 @@
       </div>
       <div class="card">
         <h4>DEVICE</h4>
-        <p>Internal battery status, sound/volume, profile, screen auto-off and device reset options.</p>
+        <p>Internal battery status, profile, screen auto-off and device reset options.</p>
       </div>
     </div>
 
@@ -406,7 +405,7 @@
       </div>
       <div class="card orange">
         <h4>Timer</h4>
-        <p>Add 1, 5 or 10 minutes, set a custom time, pause/resume and reset. An audible alert is played at the end when sound is enabled.</p>
+        <p>Add 1, 5 or 10 minutes, set a custom time, pause/resume and reset. The timer shows when the countdown has finished.</p>
       </div>
       <div class="card magenta">
         <h4>Games</h4>
@@ -423,10 +422,9 @@
       <table>
         <tbody>
           <tr><th>Internal Li-Po</th><td>Shows live internal battery voltage and estimated charge percentage.</td></tr>
-          <tr><th>Sound / Volume</th><td>Choose QUIET 0%, NORMAL 30%, LOUD 70% or MAX 100%. The setting is saved automatically.</td></tr>
-          <tr><th>AUTO / NO AUTO</th><td>Enables or disables the normal 3-minute screen auto-off.</td></tr>
+          <tr><th>AUTO / NO AUTO</th><td>AUTO switches the screen off after approximately 3 minutes of inactivity. NO AUTO keeps the screen on until you switch it off manually. This affects the display only, not the ESP32-S3 power.</td></tr>
           <tr><th>OFF</th><td>Turns the screen/backlight off. Touch the screen to wake the device.</td></tr>
-          <tr><th>PROFILE</th><td>Switch between Standard and Personalized setup, including name and sound preference.</td></tr>
+          <tr><th>PROFILE</th><td>Switch between Standard and Personalized setup, including the owner name.</td></tr>
           <tr><th>RESET</th><td>Clears the saved profile and game high scores and returns the device to first-run setup.</td></tr>
         </tbody>
       </table>
@@ -442,12 +440,16 @@
     <div class="grid">
       <div class="card green">
         <h4>USB-C charging</h4>
-        <p>Connect a suitable USB-C power source. The device automatically detects a charging session and shows the charging screen with the internal battery level and live voltage.</p>
+        <p>Set the rocker power switch to <strong>ON</strong>, then connect a suitable USB-C power source. The device detects the charging connection and shows the charging screen with the internal battery level and live voltage.</p>
       </div>
       <div class="card cyan">
         <h4>Charge complete</h4>
         <p>When the device detects a completed charge it shows <strong>FULL / CHARGE COMPLETE</strong>. The normal top-right battery icon also reflects the internal battery level.</p>
       </div>
+    </div>
+
+    <div class="warning">
+      <strong>Important — rocker switch must be ON for charging.</strong> If the rocker switch is <strong>OFF</strong>, connecting a USB-C charger may still wake the display, but the internal battery <strong>will not charge</strong>. Always move the rocker switch to <strong>ON</strong> before charging. A lit screen alone does not confirm charging.
     </div>
 
     <h4 style="margin-top:24px">Charging screen</h4>
